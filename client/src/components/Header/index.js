@@ -15,15 +15,17 @@ import {
   IconWrapper,
   ImageAvatar,
   SideBar,
+  BodyOverlay,
 } from "./style";
+import SideMenus from "../SideBar";
 
 export default function Header() {
   const [positionX, setPositionX] = useState(0);
+  const [sideOpen, setSideOpen] = useState(false);
   let auth = true;
 
   useEffect(() => {
     window.addEventListener("resize", () => setPositionX(window.innerWidth));
-
     return () => {
       window.addEventListener("resize", () => setPositionX(window.innerWidth));
     };
@@ -61,12 +63,17 @@ export default function Header() {
 
   return (
     <NavBar>
+      <BodyOverlay show={sideOpen ? "auto" : "none"} />
       <div className="container">
-        <SideBar>Hi</SideBar>
+        {sideOpen ? (
+          <SideBar show={sideOpen ? "0" : "250px"}>
+            <SideMenus sideOpen={sideOpen} setSideOpen={setSideOpen} />
+          </SideBar>
+        ) : null}
         <NavItems>
           <LeftNavItems>
             {positionX <= 480 ? (
-              <IconWrapper>
+              <IconWrapper onClick={() => setSideOpen(!sideOpen)}>
                 <AiOutlineMenuUnfold />
               </IconWrapper>
             ) : null}
