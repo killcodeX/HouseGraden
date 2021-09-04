@@ -1,25 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
-    AiOutlineUser,
-    AiOutlineArrowRight,
-    AiOutlineRight,
-  } from "react-icons/ai";
-  import { Menu, Dropdown } from "antd";
-import { NavBar, NavItems, LogoWrapper, ImageAvatar } from "./style";
+  AiOutlineUser,
+  AiOutlineArrowRight,
+  AiOutlineRight,
+  AiOutlineMenuUnfold
+} from "react-icons/ai";
+import { BsBag, BsHeart, BsJustify } from "react-icons/bs";
+import { Menu, Dropdown, Badge } from "antd";
+import {
+  NavBar,
+  NavItems,
+  LeftNavItems,
+  LogoWrapper,
+  RightNavItems,
+  IconWrapper,
+  ImageAvatar,
+} from "./style";
 
 export default function Header() {
-    let auth = true
-  const handlelogout = ({key}) => {
+  const [positionX, setPositionX] = useState(0);
+  let auth = true;
+
+  useEffect(() => {
+    window.addEventListener('resize', () => setPositionX(window.innerWidth));
+
+    return () => {
+        window.addEventListener('resize', () => setPositionX(window.innerWidth));
+    }
+  }, []);
+
+  console.log(positionX);
+  const handlelogout = ({ key }) => {
     if (key == 3) {
       console.log("log out done !!");
     }
   };
+
   const menu = (
     <Menu onClick={handlelogout}>
       {auth ? (
         <>
-          <Menu.Item key="1" icon={<AiOutlineUser />}>
+          <Menu.Item key="1" icon={<BsBag />}>
             My Orders
+          </Menu.Item>
+          <Menu.Item key="1" icon={<BsHeart />}>
+            My Wishlist
           </Menu.Item>
           <Menu.Divider />
           <Menu.Item key="3" icon={<AiOutlineArrowRight />} danger>
@@ -33,24 +58,46 @@ export default function Header() {
       )}
     </Menu>
   );
+
   return (
     <NavBar>
       <div className="container">
         <NavItems>
-          <LogoWrapper>
-            House{" "}
-            <span style={{ color: "#53974F", fontFamily: "inherit" }}>
-              Garden
-            </span>
-          </LogoWrapper>
-          <Dropdown overlay={menu} placement="bottomCenter" arrow>
-            <ImageAvatar>
-              <img
-                src={process.env.PUBLIC_URL + "/assets/150-7.jpg"}
-                alt="profile"
-              />
-            </ImageAvatar>
-          </Dropdown>
+          <LeftNavItems>
+            <IconWrapper>
+              <AiOutlineMenuUnfold/>
+            </IconWrapper>
+            <LogoWrapper>
+              House{" "}
+              <span style={{ color: "#11BF8B", fontFamily: "inherit" }}>
+                Garden
+              </span>
+            </LogoWrapper>
+          </LeftNavItems>
+          <RightNavItems>
+            {positionX > 480 ? (
+              <>
+                <Badge dot offset={[-2, 5]}>
+                  <IconWrapper>
+                    <BsBag />
+                  </IconWrapper>
+                </Badge>
+                <Badge dot offset={[-1, 2]}>
+                  <IconWrapper>
+                    <BsHeart />
+                  </IconWrapper>
+                </Badge>
+              </>
+            ) : null}
+            <Dropdown overlay={menu} placement="bottomCenter" arrow>
+              <ImageAvatar>
+                <img
+                  src={process.env.PUBLIC_URL + "/assets/150-7.jpg"}
+                  alt="profile"
+                />
+              </ImageAvatar>
+            </Dropdown>
+          </RightNavItems>
         </NavItems>
       </div>
     </NavBar>
