@@ -1,9 +1,11 @@
-import './App.css';
+import "./App.css";
 import Header from "./components/Header";
 
 function App() {
   return (
-    <Header/>
+    <div className="drawer-overlay">
+      <Header />
+    </div>
   );
 }
 

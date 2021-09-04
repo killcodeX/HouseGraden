@@ -10,3 +10,16 @@
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
 }
+
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 109;
+  /* background-color: rgba(0,0,0,.2); */
+  -webkit-animation: animation-drawer-fade-in .3s ease-in-out 1;
+  animation: animation-drawer-fade-in .3s ease-in-out 1;
+}

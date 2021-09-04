@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const NavBar = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
@@ -10,7 +11,19 @@ export const NavBar = styled.div`
 
   @media (max-width: 480px) {
     padding: 10px 5px;
+    z-index: 0;
   }
+`;
+
+export const SideBar = styled.div`
+  position: absolute;
+  left:0;
+  top:0;
+  z-index: 1;
+  background-color: red;
+  width:250px;
+  height:100vh;
+  padding:15px;
 `;
 
 export const NavItems = styled.div`
@@ -54,10 +67,6 @@ export const IconWrapper = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
-
-  @media (max-width: 480px) {
-    font-size: 20px;
-  }
 `;
 
 export const ImageAvatar = styled.div`

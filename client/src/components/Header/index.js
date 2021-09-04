@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import {
-  AiOutlineUser,
   AiOutlineArrowRight,
   AiOutlineRight,
-  AiOutlineMenuUnfold
+  AiOutlineMenuUnfold,
 } from "react-icons/ai";
-import { BsBag, BsHeart, BsJustify } from "react-icons/bs";
+import { BsBag, BsHeart } from "react-icons/bs";
 import { Menu, Dropdown, Badge } from "antd";
 import {
   NavBar,
@@ -15,6 +14,7 @@ import {
   RightNavItems,
   IconWrapper,
   ImageAvatar,
+  SideBar,
 } from "./style";
 
 export default function Header() {
@@ -22,11 +22,11 @@ export default function Header() {
   let auth = true;
 
   useEffect(() => {
-    window.addEventListener('resize', () => setPositionX(window.innerWidth));
+    window.addEventListener("resize", () => setPositionX(window.innerWidth));
 
     return () => {
-        window.addEventListener('resize', () => setPositionX(window.innerWidth));
-    }
+      window.addEventListener("resize", () => setPositionX(window.innerWidth));
+    };
   }, []);
 
   console.log(positionX);
@@ -62,11 +62,14 @@ export default function Header() {
   return (
     <NavBar>
       <div className="container">
+        <SideBar>Hi</SideBar>
         <NavItems>
           <LeftNavItems>
-            <IconWrapper>
-              <AiOutlineMenuUnfold/>
-            </IconWrapper>
+            {positionX <= 480 ? (
+              <IconWrapper>
+                <AiOutlineMenuUnfold />
+              </IconWrapper>
+            ) : null}
             <LogoWrapper>
               House{" "}
               <span style={{ color: "#11BF8B", fontFamily: "inherit" }}>
