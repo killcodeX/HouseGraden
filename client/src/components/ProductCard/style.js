@@ -54,7 +54,7 @@ export const CategoryWrapper = styled.div`
 export const StarWrapper = styled.span`
   color: #fad02c;
   font-size: 20px;
-  padding-right:5px;
+  padding-right: 5px;
 `;
 
 export const RatingWrapper = styled.div`
@@ -77,4 +77,27 @@ export const Reviews = styled.div`
   font-weight: 400;
   margin-top: 2px;
   padding-top: 12px;
+`;
+
+export const BookButton = styled.button`
+  min-width: 90px;
+  height: 40px;
+  color: #ffffff;
+  background-color: #50cd89;
+  border-radius: 0 3px 3px 0;
+  border: 0;
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 700;
+  text-shadow: none;
+`;
+
+export const LoveWrapper = styled.div`
+  font-size: 25px;
+  background: #f6f6f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  cursor: pointer;
 `;

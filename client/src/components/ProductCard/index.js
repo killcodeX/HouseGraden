@@ -1,5 +1,5 @@
-import React from "react";
-import { AiFillStar } from "react-icons/ai";
+import React, { useState } from "react";
+import { AiFillStar, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import {
   ProductCardWrapper,
   ImageWrapper,
@@ -11,6 +11,8 @@ import {
   StarWrapper,
   RatingWrapper,
   Reviews,
+  BookButton,
+  LoveWrapper,
 } from "./style";
 
 // Create our number formatter.
@@ -20,6 +22,7 @@ var formatter = new Intl.NumberFormat("en-US", {
 });
 
 export default function ProductCard() {
+  const [like, setLike] = useState(false);
   return (
     <ProductCardWrapper>
       <ImageWrapper
@@ -42,6 +45,12 @@ export default function ProductCard() {
         <ReviewWrapper>
           <PriceWrapper>{formatter.format(749)}</PriceWrapper>
           <Reviews>{`480 Reviews`}</Reviews>
+        </ReviewWrapper>
+        <ReviewWrapper className="mt-2">
+          <BookButton>By Now</BookButton>
+          <LoveWrapper onClick={() => setLike(!like)}>
+            {like ? <AiFillHeart style={{color:'#FF4345'}}/> : <AiOutlineHeart />}
+          </LoveWrapper>
         </ReviewWrapper>
       </CardDetails>
     </ProductCardWrapper>
