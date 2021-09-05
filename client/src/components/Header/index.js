@@ -18,20 +18,14 @@ import {
   BodyOverlay,
 } from "./style";
 import SideMenus from "../SideBar";
+import useWindowSize from "../../helpers/windowSize";
 
 export default function Header() {
+  const { width } = useWindowSize();
   const [positionX, setPositionX] = useState(0);
   const [sideOpen, setSideOpen] = useState(false);
   let auth = true;
 
-  useEffect(() => {
-    window.addEventListener("resize", () => setPositionX(window.innerWidth));
-    return () => {
-      window.addEventListener("resize", () => setPositionX(window.innerWidth));
-    };
-  }, []);
-
-  console.log(positionX);
   const handlelogout = ({ key }) => {
     if (key == 3) {
       console.log("log out done !!");
@@ -63,7 +57,6 @@ export default function Header() {
 
   return (
     <NavBar>
-      <BodyOverlay show={sideOpen ? "auto" : "none"} />
       <div className="container">
         {sideOpen ? (
           <SideBar show={sideOpen}>
@@ -72,7 +65,7 @@ export default function Header() {
         ) : null}
         <NavItems>
           <LeftNavItems>
-            {positionX <= 480 ? (
+            {width <= 480 ? (
               <IconWrapper onClick={() => setSideOpen(!sideOpen)}>
                 <AiOutlineMenuUnfold />
               </IconWrapper>

@@ -1,7 +1,7 @@
 export const category = [
-  { label: "Gardening", value: "Gardening" },
-  { label: "Plants", value: "Plants" },
-  { label: "Seeds", value: "Seeds" },
-  { label: "Bulbs", value: "Bulbs" },
-  { label: "Planters", value: "Planters" },
+  { id: 1, label: "Gardening", value: "Gardening" },
+  { id: 2, label: "Plants", value: "Plants" },
+  { id: 3, label: "Seeds", value: "Seeds" },
+  { id: 4, label: "Bulbs", value: "Bulbs" },
+  { id: 5, label: "Planters", value: "Planters" },
 ];
