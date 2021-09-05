@@ -22,7 +22,6 @@ import useWindowSize from "../../helpers/windowSize";
 
 export default function Header() {
   const { width } = useWindowSize();
-  const [positionX, setPositionX] = useState(0);
   const [sideOpen, setSideOpen] = useState(false);
   let auth = true;
 
@@ -78,7 +77,7 @@ export default function Header() {
             </LogoWrapper>
           </LeftNavItems>
           <RightNavItems>
-            {positionX > 480 ? (
+            {width > 480 ? (
               <>
                 <Badge dot offset={[-2, 5]}>
                   <IconWrapper>
