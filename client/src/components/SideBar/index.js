@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineDoubleLeft } from "react-icons/ai";
-import { Divider, Checkbox, InputNumber, Slider, Rate } from "antd";
+import { Divider, Checkbox, Slider, Rate } from "antd";
 import {
   SideWarpper,
   SideHeader,

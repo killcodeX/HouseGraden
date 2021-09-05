@@ -6,10 +6,10 @@ import Home from "./container/Home"
 function App() {
   const { width } = useWindowSize();
   return (
-    <>
+    <main className='position-relative'>
       <Header />
       <Home />
-    </>
+    </main>
   );
 }
 

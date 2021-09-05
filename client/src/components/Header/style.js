@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
 export const NavBar = styled.div`
-  position: relative;
+  position: fixed;
+  top:0;
+  background:white;
   display: flex;
   align-items: center;
   width: 100%;
   padding: 10px 25px;
   min-height: 82px;
   border-bottom: 1px solid #c8beaa;
+  z-index:1;
 
   @media (max-width: 480px) {
     padding: 10px 5px;
