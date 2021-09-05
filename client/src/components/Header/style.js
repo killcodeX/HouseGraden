@@ -24,7 +24,7 @@ export const SideBar = styled.div`
   width: 250px;
   height: 100vh;
   padding: 15px;
-  transition: width 2s ease-out;
+  transition: left 0.5s ease-out;
 `;
 
 export const NavItems = styled.div`

@@ -15,3 +15,17 @@ export const IconWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
+
+export const SideBarTitle = styled.div`
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 1px;
+`;
+
+export const SideBarHeading = styled.div`
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+`;
+
+

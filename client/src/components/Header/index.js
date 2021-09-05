@@ -66,7 +66,7 @@ export default function Header() {
       <BodyOverlay show={sideOpen ? "auto" : "none"} />
       <div className="container">
         {sideOpen ? (
-          <SideBar show={sideOpen ? "0" : "250px"}>
+          <SideBar show={sideOpen}>
             <SideMenus sideOpen={sideOpen} setSideOpen={setSideOpen} />
           </SideBar>
         ) : null}
