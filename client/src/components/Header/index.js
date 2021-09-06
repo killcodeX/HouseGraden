@@ -19,6 +19,7 @@ import {
 } from "./style";
 import SideMenus from "../SideBar";
 import useWindowSize from "../../helpers/windowSize";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const { width } = useWindowSize();
@@ -70,10 +71,12 @@ export default function Header() {
               </IconWrapper>
             ) : null}
             <LogoWrapper>
-              House{" "}
-              <span style={{ color: "#11BF8B", fontFamily: "inherit" }}>
-                Garden
-              </span>
+              <Link style={{ color: "inherit", textDecoration: "none", fontFamily:"inherit" }} to="/">
+                House{" "}
+                <span style={{ color: "#11BF8B", fontFamily: "inherit" }}>
+                  Garden
+                </span>
+              </Link>
             </LogoWrapper>
           </LeftNavItems>
           <RightNavItems>

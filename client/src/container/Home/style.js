@@ -55,7 +55,7 @@ export const SearchBar = styled.input`
   background: #fafafa;
   color: #979797;
 
-  &:foucs {
+  &:focus {
     outline: none;
     border: none;
   }
