@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiFillStar, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import {
   ProductCardWrapper,
   ImageWrapper,
@@ -47,9 +48,20 @@ export default function ProductCard() {
           <Reviews>{`480 Reviews`}</Reviews>
         </ReviewWrapper>
         <ReviewWrapper className="mt-2">
-          <BookButton>By Now</BookButton>
+          <BookButton>
+            <Link
+              style={{ color: "inherit", textDecoration: "none" }}
+              to={`/product/1`}
+            >
+              By Now
+            </Link>
+          </BookButton>
           <LoveWrapper onClick={() => setLike(!like)}>
-            {like ? <AiFillHeart style={{color:'#FF4345'}}/> : <AiOutlineHeart />}
+            {like ? (
+              <AiFillHeart style={{ color: "#FF4345" }} />
+            ) : (
+              <AiOutlineHeart />
+            )}
           </LoveWrapper>
         </ReviewWrapper>
       </CardDetails>
