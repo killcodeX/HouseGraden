@@ -26,9 +26,11 @@ var formatter = new Intl.NumberFormat("en-US", {
 export default function SingleProduct() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const product = useSelector((state) => state.products.singleproduct);
+  const product = useSelector((state) => state.products.singleProduct);
   const [like, setLike] = useState(false);
   const [numberItem, setNumberItem] = useState(1);
+
+  console.log(product)
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
@@ -38,39 +40,33 @@ export default function SingleProduct() {
     setNumberItem(value);
   }
 
+  if(!product?.image){
+    return <span>loading...</span>
+  }
+
   return (
     <SectionWrapper>
       <div className="container">
         <div className="row">
           <div className="col-md-5 col-sm-12 p-3">
             <ProductImageWrapper>
-              <img
-                src={
-                  "//cdn.shopify.com/s/files/1/0047/9730/0847/products/nurserylive-top-4-die-hard-succulents-pack_4368a560-5bb3-426a-bcfc-a30560e365b1_600x600.jpg?v=1612688579"
-                }
-                alt="plant"
-              />
+              <img src={product.image} alt={product.title} />
             </ProductImageWrapper>
           </div>
           <div className="col-md-7 col-sm- p-3">
-            <ProductTitle>Top 4 Die Hard Succulents Pack</ProductTitle>
+            <ProductTitle>{product.title}</ProductTitle>
             <ProductReview>
               <Rate
                 style={{ zIndex: "-1" }}
                 allowHalf
                 disabled
-                defaultValue={4.5}
+                defaultValue={product.rating}
               />
-              <span className="px-5">133 Reviews</span>
+              <span className="px-5">{`${product.totalReviews} Reviews`}</span>
             </ProductReview>
-            <ProductDescription>
-              Succulents are wonderful plants that require very little attention
-              to care. They add a textured and structured look to any corner of
-              your garden. The unbeatable beauty and hardy nature of succulents
-              attract gardeners especially beginners.
-            </ProductDescription>
+            <ProductDescription>{product.description}</ProductDescription>
             <CartSection>
-              <ProductPrice>{formatter.format(749 * numberItem)}</ProductPrice>
+              <ProductPrice>{formatter.format(product.price * numberItem)}</ProductPrice>
               <div>
                 <span className="px-3">Quantity:</span>
                 <InputNumber
@@ -95,7 +91,7 @@ export default function SingleProduct() {
           </div>
         </div>
         <Divider />
-        <ProductDetail />
+        <ProductDetail product={product}/>
       </div>
     </SectionWrapper>
   );
