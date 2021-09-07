@@ -1,13 +1,21 @@
-import React from "react";
+import React,{ useEffect } from "react";
 import useWindowSize from "../../helpers/windowSize";
 import { HomeWrapper, SideMenuWrapper } from "./style";
 import SideMenus from "../../components/SideBar";
 import Searchform from "./searchform";
 import ProductCard from "../../components/ProductCard";
+import { useDispatch, useSelector, useselector } from "react-redux";
+import { getAllProduct } from "../../redux/actions/postactions";
 
 export default function Home() {
-  let arr = [1, 2, 3, 4, 5, 6];
   const { width } = useWindowSize();
+  const dispatch = useDispatch()
+  const products = useSelector(state => state.products.allProducts)
+
+  useEffect(() => {
+    dispatch(getAllProduct())
+  }, [])
+
   return (
     <HomeWrapper>
       {width > 1000 ? (
@@ -17,10 +25,10 @@ export default function Home() {
       ) : null}
       <Searchform />
       <div className="row mt-5">
-        {arr.map((item) => {
+        {products.map((item) => {
           return (
-            <div key={item} className="col-sm-4 mb-5">
-              <ProductCard />
+            <div key={item._id} className="col-sm-4 mb-5">
+              <ProductCard item={item}/>
             </div>
           );
         })}

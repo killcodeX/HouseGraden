@@ -1,4 +1,12 @@
 import axios from "axios";
+import { notification } from "antd";
+
+const openNotificationWithIcon = (type, title, message) => {
+  notification[type]({
+    message: title,
+    description: message,
+  });
+};
 
 const baseURL = process.env.NODE_ENV ==='development'? "http://localhost:5000": ""
 
