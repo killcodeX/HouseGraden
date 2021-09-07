@@ -32,6 +32,7 @@ export const NameWrapper = styled.h3`
   //overflow: hidden;
   //text-overflow: ellipsis;
   flex-wrap: wrap;
+  min-height: 40px;
 `;
 
 export const ReviewWrapper = styled.div`

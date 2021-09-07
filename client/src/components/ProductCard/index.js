@@ -22,36 +22,30 @@ var formatter = new Intl.NumberFormat("en-US", {
   currency: "INR",
 });
 
-export default function ProductCard() {
+export default function ProductCard({ item }) {
+  console.log(item);
   const [like, setLike] = useState(false);
   return (
     <ProductCardWrapper>
-      <ImageWrapper
-        src={
-          "https://cdn.shopify.com/s/files/1/0047/9730/0847/products/nurserylive-combo-packs-plants-set-of-3-air-purifier-n-summer-cooling-plants-pack_512x512.jpg?v=1617626935"
-        }
-        alt="plant"
-      />
+      <ImageWrapper src={item.image} alt={item.title} />
       <CardDetails>
-        <NameWrapper>
-          Set of 3 Air Purifier n Summer Cooling Plants Pack
-        </NameWrapper>
+        <NameWrapper>{item.title}</NameWrapper>
         <ReviewWrapper>
-          <CategoryWrapper>Plants</CategoryWrapper>
+          <CategoryWrapper>{item.category}</CategoryWrapper>
           <StarWrapper>
             <AiFillStar />
           </StarWrapper>
-          <RatingWrapper>4.2</RatingWrapper>
+          <RatingWrapper>{item.rating}</RatingWrapper>
         </ReviewWrapper>
         <ReviewWrapper>
-          <PriceWrapper>{formatter.format(749)}</PriceWrapper>
-          <Reviews>{`480 Reviews`}</Reviews>
+          <PriceWrapper>{formatter.format(item.price)}</PriceWrapper>
+          <Reviews>{`${item.totalReviews} Reviews`}</Reviews>
         </ReviewWrapper>
         <ReviewWrapper className="mt-2">
           <BookButton>
             <Link
               style={{ color: "inherit", textDecoration: "none" }}
-              to={`/product/1`}
+              to={`/product/${item._id}`}
             >
               By Now
             </Link>
