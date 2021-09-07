@@ -37,3 +37,19 @@ export const getAllProductApi = async () => {
       }
     }
   };
+
+  // to get single product
+export const getSingleProductApi = async (id) => {
+  try {
+    const { data } = await ApiFunc.get(`/housegarden/single-product/${id}`);
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Fetching Single Product Failed",
+        error.response.data.message
+      );
+    }
+  }
+};

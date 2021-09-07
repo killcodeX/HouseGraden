@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Rate, Divider, InputNumber } from "antd";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import {
@@ -13,6 +13,9 @@ import {
   WishListButton,
 } from "./style";
 import ProductDetail from "./productDetail";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getSingleProduct } from "../../redux/actions/postactions";
 
 // Create our number formatter.
 var formatter = new Intl.NumberFormat("en-US", {
@@ -21,8 +24,15 @@ var formatter = new Intl.NumberFormat("en-US", {
 });
 
 export default function SingleProduct() {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const product = useSelector((state) => state.products.singleproduct);
   const [like, setLike] = useState(false);
   const [numberItem, setNumberItem] = useState(1);
+
+  useEffect(() => {
+    dispatch(getSingleProduct(id));
+  }, [id]);
 
   function onChange(value) {
     setNumberItem(value);
@@ -45,7 +55,12 @@ export default function SingleProduct() {
           <div className="col-md-7 col-sm- p-3">
             <ProductTitle>Top 4 Die Hard Succulents Pack</ProductTitle>
             <ProductReview>
-              <Rate style={{zIndex:'-1'}} allowHalf disabled defaultValue={4.5} />
+              <Rate
+                style={{ zIndex: "-1" }}
+                allowHalf
+                disabled
+                defaultValue={4.5}
+              />
               <span className="px-5">133 Reviews</span>
             </ProductReview>
             <ProductDescription>
@@ -80,7 +95,7 @@ export default function SingleProduct() {
           </div>
         </div>
         <Divider />
-        <ProductDetail/>
+        <ProductDetail />
       </div>
     </SectionWrapper>
   );

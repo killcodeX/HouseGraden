@@ -1,7 +1,8 @@
-import { GetAllProduct } from "../actions/constactions";
+import { GetAllProduct, GetSingleProduct } from "../actions/constactions";
 
 const initialState = {
   allProducts: [],
+  singleProduct: {},
 };
 
 // Reducers
@@ -11,6 +12,11 @@ const ProductReducer = (state = initialState, action) => {
       return {
         ...state,
         allProducts: action.payload || [],
+      };
+    case GetSingleProduct:
+      return {
+        ...state,
+        singleProduct: action.payload,
       };
     default:
       return state;
