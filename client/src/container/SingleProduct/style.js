@@ -12,6 +12,7 @@ export const ProductImageWrapper = styled.div`
   width: 27rem;
   height: 27rem;
   overflow: hidden;
+  box-shadow: 0 13px 43px rgb(37 46 89 / 23%);
   img {
     width: 100%;
     height: 100%;
@@ -123,6 +124,7 @@ export const ProductReiviewUpper = styled.div`
 export const ProductReiviews = styled.div`
   //border: 1px solid black;
   padding: 15px;
+  box-shadow: 0 13px 43px 0 rgb(37 46 89 / 10%);
 `;
 
 export const ProfileImage = styled.div`
