@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SectionWrapper = styled.div`
   margin-top: 100px;
+  padding-bottom: 100px;
 `;
 
 export const ProductImageWrapper = styled.div`
@@ -42,17 +43,17 @@ export const ProductDescription = styled.div`
   letter-spacing: 1px;
   color: #9ca8a8;
 
-  @media(max-width:480px){
+  @media (max-width: 480px) {
     width: 330px;
-    text-align:center;
-    margin:30px auto;
+    text-align: center;
+    margin: 30px auto;
   }
 `;
 
 export const ProductPrice = styled.div`
   font-size: 35px;
-  @media(max-width:480px){
-    margin-bottom:20px;
+  @media (max-width: 480px) {
+    margin-bottom: 20px;
   }
 `;
 
@@ -62,8 +63,8 @@ export const CartSection = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  @media(max-width:480px){
-    flex-direction:column;
+  @media (max-width: 480px) {
+    flex-direction: column;
   }
 `;
 
@@ -79,8 +80,8 @@ export const AddCartButton = styled.button`
   font-weight: 500;
   text-shadow: none;
 
-  @media(max-width:480px){
-    margin-bottom:20px;
+  @media (max-width: 480px) {
+    margin-bottom: 20px;
   }
 `;
 
@@ -98,4 +99,56 @@ export const WishListButton = styled.button`
   box-shadow: none;
   font-weight: 500;
   text-shadow: none;
+`;
+
+// about the product
+
+export const ProductPageTitle = styled.div`
+  font-size: 25px;
+  margin-bottom: 20px;
+`;
+
+export const AboutProduct = styled.div`
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 30px;
+`;
+
+export const ProductReiviewUpper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const ProductReiviews = styled.div`
+  //border: 1px solid black;
+  padding: 15px;
+`;
+
+export const ProfileImage = styled.div`
+  width: 37px;
+  height: 37px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 25px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+export const ReviewTitle = styled.div`
+  font-size: 17px;
+  font-weight: 500;
+`;
+
+export const ReviewDate = styled.div`
+  font-size: 15px;
+  color: #9ca8a8;
+`;
+
+export const ProductActualReview = styled.div`
+  margin-top: 14px;
+  font-size: 14px;
 `;

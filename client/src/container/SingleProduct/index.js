@@ -12,6 +12,7 @@ import {
   AddCartButton,
   WishListButton,
 } from "./style";
+import ProductDetail from "./productDetail";
 
 // Create our number formatter.
 var formatter = new Intl.NumberFormat("en-US", {
@@ -79,6 +80,7 @@ export default function SingleProduct() {
           </div>
         </div>
         <Divider />
+        <ProductDetail/>
       </div>
     </SectionWrapper>
   );
