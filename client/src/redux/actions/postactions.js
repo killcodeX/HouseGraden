@@ -1,0 +1,3 @@
+import { GetAllProduct } from "./constactions";
+
+
