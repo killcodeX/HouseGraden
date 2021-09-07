@@ -2,10 +2,9 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
-import hotelRoutes from "./routes/route.js";
+import gardenRoutes from "./routes/route.js";
 import dotenv from "dotenv";
 import Razorpay from "razorpay";
-import shortid  from "shortid";
 
 const app = express();
 dotenv.config();
@@ -21,10 +20,12 @@ app.use(cors());
 // });
 
 // sholud be called after initializing cors to avoid cors origin issue
-app.use("/hotelin", hotelRoutes);
+app.use("/housegarden", gardenRoutes);
+
+console.log(process.env.DB_PASSWORD)
 
 // for database
-const connectionUrl = `mongodb+srv://Aaquib5076:${process.env.DB_PASSWORD}@cluster0.oknup.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const connectionUrl = `mongodb+srv://Aaquib5076:${process.env.DB_PASSWORD}@cluster0.kx4ok.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 const PORT = process.env.PORT || 5000;
 
@@ -35,4 +36,4 @@ mongoose
   )
   .catch((err) => console.log(err));
 
-mongoose.set("useFindAndModify", false);
+//mongoose.set("useFindAndModify", false);

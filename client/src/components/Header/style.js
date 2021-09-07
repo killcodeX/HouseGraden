@@ -22,7 +22,7 @@ export const SideBar = styled.div`
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 1;
+  z-index: 0;
   background-color: white;
   width: 250px;
   height: 100vh;

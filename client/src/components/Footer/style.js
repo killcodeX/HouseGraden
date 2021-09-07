@@ -7,6 +7,7 @@ export const FooterWrapper = styled.footer`
   width: 100%;
   padding: 10px 25px;
   border-top: 1px solid #c8beaa;
+  z-index: 1;
 `;
 
 export const FooterContent = styled.div`
