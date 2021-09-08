@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import { SectionWrapper } from "./style";
 
 export default function Cart() {
-    return (
-        <div>
-            This is Cart Page
-        </div>
-    )
+  return (
+    <SectionWrapper>
+      <div className="container">This is Cart Page</div>
+    </SectionWrapper>
+  );
 }

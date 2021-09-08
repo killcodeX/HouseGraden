@@ -6,6 +6,12 @@ export const category = [
   { id: 5, label: "Planters", value: "Planters" },
 ];
 
+export const order = [
+  { id: 1, label: "Recent Orders", value: "Recent Orders" },
+  { id: 2, label: "Cancelled Orders", value: "Cancelled Orders" },
+  { id: 3, label: "Received Orders", value: "Received Orders" },
+];
+
 export const Products = [
   {
     image:
