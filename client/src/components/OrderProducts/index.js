@@ -12,7 +12,6 @@ import {
   PriceWrapper,
   Reviews,
   BookButton,
-  LoveWrapper,
 } from "./style";
 
 // Create our number formatter.
@@ -23,6 +22,7 @@ var formatter = new Intl.NumberFormat("en-US", {
 
 export default function OrderProduct() {
   const [like, setLike] = useState(true);
+  let obj = { 'ordered' :"#50cd89", 'cancelled':"#FF5052", 'received':"#6571FF"}
   return (
     <ProductCardWrapper>
       <FlexSection>
@@ -40,21 +40,14 @@ export default function OrderProduct() {
           </ProductTitle>
           <FlexSection className="mb-1">
             <ProductCategory>Plants</ProductCategory>
-            <Rate style={{ fontSize: "16px" }} value={4.2} />
+            <Reviews>Ordered on 12th Aug 21</Reviews>
           </FlexSection>
           <FlexSection className="mb-3">
             <PriceWrapper>{formatter.format(749)}</PriceWrapper>
-            <Reviews>{`${123} Reviews`}</Reviews>
+            <ProductCategory><strong>Order id:</strong> #1</ProductCategory>
           </FlexSection>
           <FlexSection>
-            <BookButton>Add To Cart</BookButton>
-            <LoveWrapper onClick={() => setLike(!like)}>
-              {like ? (
-                <AiFillHeart style={{ color: "#FF4345" }} />
-              ) : (
-                <AiOutlineHeart />
-              )}
-            </LoveWrapper>
+            <BookButton status={obj['cancelled']}>Cancelled</BookButton>
           </FlexSection>
         </RightSideProduct>
       </FlexSection>

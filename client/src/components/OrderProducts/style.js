@@ -10,6 +10,7 @@ export const ProductCardWrapper = styled.div`
   box-shadow: 0 13px 43px 0 rgb(37 46 89 / 10%);
   @media (max-width: 480px) {
     margin: 0 auto;
+    width: 300px;
   }
 `;
 
@@ -35,6 +36,10 @@ export const FlexSection = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
 `;
 
 export const RightSideProduct = styled.div`
@@ -52,7 +57,10 @@ export const ProductTitle = styled.div`
   margin-bottom: 15px;
 
   @media (max-width: 480px) {
-    font-size: 13px;
+    //font-size: 13px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    text-align: center;
   }
 `;
 
@@ -71,22 +79,22 @@ export const PriceWrapper = styled.p`
 `;
 
 export const Reviews = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   margin-top: 2px;
-  padding-top: 12px;
 `;
 
-export const BookButton = styled.button`
-  min-width: 130px;
+export const BookButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
   height: 40px;
-  color: #ffffff;
-  background-color: #50cd89;
+  color: ${(props) => props.status};
+  border: 1px solid ${(props) => props.status};
   border-radius: 0 3px 3px 0;
-  border: 0;
-  box-shadow: none;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   text-shadow: none;
 `;
 
