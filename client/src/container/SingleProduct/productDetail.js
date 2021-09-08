@@ -16,7 +16,7 @@ export default function ProductDetail({ product }) {
     <div>
       <ProductPageTitle>About the Plant</ProductPageTitle>
       <AboutProduct>{product.about}</AboutProduct>
-      <table class="table table-bordered my-4">
+      <table className="table table-bordered my-4">
         <tbody>
           <tr>
             <th>Common Name</th>

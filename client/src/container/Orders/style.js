@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const SectionWrapper = styled.div`
   margin-top: 100px;
   margin-left: 250px;
-  padding: 40px;
-
+  padding-bottom: 100px;
   @media (max-width: 480px) {
     margin-left: 0;
   }
@@ -12,7 +11,7 @@ export const SectionWrapper = styled.div`
 
 export const SectionTitle = styled.div`
   font-size: 2.2rem;
-  font-weight:500;
+  font-weight: 500;
   margin-top: 0px;
 `;
 
@@ -45,4 +44,9 @@ export const SideBarTitle = styled.div`
   font-size: 22px;
   font-weight: 600;
   letter-spacing: 1px;
+`;
+
+export const SectionSubTitle = styled.div`
+  font-size: 19px;
+  font-weight: 500;
 `;
