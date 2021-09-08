@@ -18,11 +18,13 @@ import {
   BodyOverlay,
 } from "./style";
 import SideMenus from "../SideBar";
+import OrderSideMenus from "../../container/Orders/sideMenus";
 import useWindowSize from "../../helpers/windowSize";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
   const { width } = useWindowSize();
+  const location = useLocation();
   const [sideOpen, setSideOpen] = useState(false);
   let auth = true;
 
@@ -31,6 +33,12 @@ export default function Header() {
       console.log("log out done !!");
     }
   };
+
+  if(sideOpen){
+    document.body.classList.add('overlay');
+  } else{
+    document.body.classList.remove('overlay');
+  }
 
   const menu = (
     <Menu onClick={handlelogout}>
@@ -62,9 +70,11 @@ export default function Header() {
     <NavBar>
       <div className="container">
         {sideOpen ? (
-          <SideBar show={sideOpen}>
+          location.pathname == "/my-orders" ? (
+            <OrderSideMenus sideOpen={sideOpen} setSideOpen={setSideOpen} />
+          ) : (
             <SideMenus sideOpen={sideOpen} setSideOpen={setSideOpen} />
-          </SideBar>
+          )
         ) : null}
         <NavItems>
           <LeftNavItems>
@@ -94,15 +104,15 @@ export default function Header() {
               <>
                 <Badge dot offset={[-2, 5]}>
                   <IconWrapper>
-                    <Link style={{color:"inherit"}} to="/my-cart">
+                    <Link style={{ color: "inherit" }} to="/my-cart">
                       <BsBag />
                     </Link>
                   </IconWrapper>
                 </Badge>
                 <Badge dot offset={[-1, 2]}>
                   <IconWrapper>
-                  <Link style={{color:"inherit"}} to="/my-wishlist">
-                    <BsHeart />
+                    <Link style={{ color: "inherit" }} to="/my-wishlist">
+                      <BsHeart />
                     </Link>
                   </IconWrapper>
                 </Badge>

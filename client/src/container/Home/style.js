@@ -23,6 +23,22 @@ export const SideMenuWrapper = styled.div`
 `;
 
 // for search form
+
+export const FlexWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 480px) {
+    justify-content: center;
+    flex-direction: column;
+  }
+`;
+
+export const FormLabel = styled.div`
+  font-size: 14px;
+`;
+
 export const SearchWrapper = styled.div`
   position: relative;
   margin-bottom: 10px;
@@ -32,13 +48,13 @@ export const SearchWrapper = styled.div`
 export const SearchIcon = styled.div`
   display: inline-block;
   position: absolute;
-  left: 36px;
+  right: 36px;
   top: 3px;
   font-size: 27px;
   color: #979797;
 
   @media (max-width: 480px) {
-    left: 28px;
+    right: 28px;
     top: 1px;
     font-size: 22px;
   }
@@ -49,11 +65,12 @@ export const SearchBar = styled.input`
   height: 50px;
   border-radius: 14px;
   border: 1px solid #fafafa;
-  padding-left: 68px;
+  padding-left: 28px;
   font-size: 20px;
   font-weight: 400;
-  background: #fafafa;
+  //background: #fafafa;
   color: #979797;
+  border: 1px solid #dedede;
 
   &:focus {
     outline: none;

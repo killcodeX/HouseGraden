@@ -6,10 +6,9 @@ import { SideWarpper } from "../../components/SideBar/style";
 import { SideHeader, IconWrapper, SideBarTitle } from "./style";
 import { order } from "../../fakedata";
 
-export default function OrderSideMenus() {
+export default function OrderSideMenus({sideOpen, setSideOpen}) {
   const [value, setValue] = useState("");
   const { width } = useWindowSize();
-  //onClick={() => setSideOpen(!sideOpen)}
 
   function handleChange(checkedValues) {
     setValue(checkedValues.target.value);
@@ -20,7 +19,7 @@ export default function OrderSideMenus() {
       <SideHeader>
         <SideBarTitle>Order History</SideBarTitle>
         {width <= 480 ? (
-          <IconWrapper>
+          <IconWrapper onClick={() => setSideOpen(!sideOpen)}>
             <AiOutlineDoubleLeft />
           </IconWrapper>
         ) : null}

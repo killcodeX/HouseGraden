@@ -19,15 +19,7 @@ export const NavBar = styled.div`
 `;
 
 export const SideBar = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 0;
-  background-color: white;
-  width: 250px;
-  height: 100vh;
-  padding: 15px;
-  transition: left 0.5s ease-out;
+  
 `;
 
 export const NavItems = styled.div`
@@ -89,16 +81,16 @@ export const ImageAvatar = styled.div`
 
 // for body
 
-export const BodyOverlay = styled.body`
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  overflow: hidden;
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.2);
-  -webkit-animation: animation-drawer-fade-in 0.3s ease-in-out 1;
-  animation: animation-drawer-fade-in 0.3s ease-in-out 1;
-  display: ${(props) => props.show};
-`;
+// export const BodyOverlay = styled.body`
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   bottom: 0;
+//   right: 0;
+//   overflow: hidden;
+//   z-index: 1;
+//   background-color: rgba(0, 0, 0, 0.2);
+//   -webkit-animation: animation-drawer-fade-in 0.3s ease-in-out 1;
+//   animation: animation-drawer-fade-in 0.3s ease-in-out 1;
+//   display: ${(props) => props.show};
+// `;
