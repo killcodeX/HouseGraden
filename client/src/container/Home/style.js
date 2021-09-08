@@ -26,7 +26,7 @@ export const SideMenuWrapper = styled.div`
 export const SearchWrapper = styled.div`
   position: relative;
   margin-bottom: 10px;
-  z-index:-1;
+  //z-index:-1;
 `;
 
 export const SearchIcon = styled.div`

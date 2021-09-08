@@ -27,7 +27,7 @@ export default function Header() {
   let auth = true;
 
   const handlelogout = ({ key }) => {
-    if (key == 3) {
+    if (key == 4) {
       console.log("log out done !!");
     }
   };
@@ -37,13 +37,16 @@ export default function Header() {
       {auth ? (
         <>
           <Menu.Item key="1" icon={<BsBag />}>
-            My Orders
+            <Link to="/my-orders">My Orders</Link>
           </Menu.Item>
-          <Menu.Item key="1" icon={<BsHeart />}>
-            My Wishlist
+          <Menu.Item key="2" icon={<BsBag />}>
+            <Link to="/my-cart">My Cart</Link>
+          </Menu.Item>
+          <Menu.Item key="3" icon={<BsHeart />}>
+            <Link to="/my-wishlist">My Wishlist</Link>
           </Menu.Item>
           <Menu.Divider />
-          <Menu.Item key="3" icon={<AiOutlineArrowRight />} danger>
+          <Menu.Item key="4" icon={<AiOutlineArrowRight />} danger>
             Log Out
           </Menu.Item>
         </>
@@ -71,7 +74,14 @@ export default function Header() {
               </IconWrapper>
             ) : null}
             <LogoWrapper>
-              <Link style={{ color: "inherit", textDecoration: "none", fontFamily:"inherit" }} to="/">
+              <Link
+                style={{
+                  color: "inherit",
+                  textDecoration: "none",
+                  fontFamily: "inherit",
+                }}
+                to="/"
+              >
                 House{" "}
                 <span style={{ color: "#11BF8B", fontFamily: "inherit" }}>
                   Garden
@@ -84,12 +94,16 @@ export default function Header() {
               <>
                 <Badge dot offset={[-2, 5]}>
                   <IconWrapper>
-                    <BsBag />
+                    <Link style={{color:"inherit"}} to="/my-cart">
+                      <BsBag />
+                    </Link>
                   </IconWrapper>
                 </Badge>
                 <Badge dot offset={[-1, 2]}>
                   <IconWrapper>
+                  <Link style={{color:"inherit"}} to="/my-wishlist">
                     <BsHeart />
+                    </Link>
                   </IconWrapper>
                 </Badge>
               </>

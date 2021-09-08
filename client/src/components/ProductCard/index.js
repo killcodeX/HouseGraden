@@ -23,7 +23,6 @@ var formatter = new Intl.NumberFormat("en-US", {
 });
 
 export default function ProductCard({ item }) {
-  console.log(item);
   const [like, setLike] = useState(false);
   return (
     <ProductCardWrapper>
