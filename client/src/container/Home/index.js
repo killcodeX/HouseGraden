@@ -1,6 +1,6 @@
 import React,{ useEffect } from "react";
 import useWindowSize from "../../helpers/windowSize";
-import { HomeWrapper, SideMenuWrapper } from "./style";
+import { HomeWrapper, SideMenuWrapper, NoDataBanner } from "./style";
 import SideMenus from "../../components/SideBar";
 import Searchform from "./searchform";
 import ProductCard from "../../components/ProductCard";
@@ -15,6 +15,14 @@ export default function Home() {
   useEffect(() => {
     dispatch(getAllProduct())
   }, [])
+
+  if(products?.length == 0){
+    return (
+      <NoDataBanner>
+        <img src={process.env.PUBLIC_URL + "/assets/nodata.png"} alt='nodata'/>
+      </NoDataBanner>
+    )
+  }
 
   return (
     <HomeWrapper>
