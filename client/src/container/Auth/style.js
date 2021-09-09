@@ -3,12 +3,13 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 100%;
   min-height: 100vh;
-  position: relative;
 `;
 
 export const FormWrapper = styled.div`
   min-height: 100vh;
   padding: 2rem;
+  position:absolute;
+  right:0;
   @media (max-width: 480px) {
     padding: 0;
   }
@@ -32,12 +33,12 @@ export const CardUpper = styled.div`
 `;
 
 export const LogoWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  padding-bottom: 20px;
-  img {
-    width: 20%;
-    height: 20%;
+  font-family: "Lobster", cursive !important;
+  font-size: 29px;
+  text-align:center;
+  @media (max-width: 480px) {
+    font-size: 25px;
+    padding-left: 10px;
   }
 `;
 
@@ -67,8 +68,8 @@ export const InfoWrapper = styled.div``;
 export const BannerWrapper = styled.div`
   position: fixed;
   top: 0;
-  right: 0;
-  background: url(${process.env.PUBLIC_URL + "/assets/banners/1.jpg"}) no-repeat;
+  left: 0;
+  background: url(${props => props.banner}) no-repeat;
   background-size: cover;
   background-position: center;
   width: 50%;
@@ -89,7 +90,6 @@ export const BannerWrapper = styled.div`
     display: none;
   }
 `;
-
 
 export const FormLabel = styled.div`
   font-size: 14px;

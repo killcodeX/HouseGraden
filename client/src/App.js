@@ -20,9 +20,12 @@ import Register from "./container/Auth/register";
 
 function App() {
   const { width } = useWindowSize();
+  const location = useLocation();
   return (
     <main className='position-relative'>
-      <Header />
+      {location.pathname !== "/login" && location.pathname !== "/register" ? (
+        <Header />
+      ) : null}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/product/:id" component={SingleProduct} />
@@ -32,7 +35,10 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
       </Switch>
-      <Footer/>
+      {location.pathname !== "/login" && location.pathname !== "/register" ? (
+        <Footer />
+      ) : null}
+
     </main>
   );
 }

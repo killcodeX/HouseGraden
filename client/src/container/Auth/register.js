@@ -37,20 +37,29 @@ export default function Register() {
   return (
     <Wrapper className="container-fluid">
       <div className="row">
+        <BannerWrapper
+          className="col-sm-6"
+          banner={`${process.env.PUBLIC_URL}/assets/register.jpg`}
+        ></BannerWrapper>
         <FormWrapper className="col-sm-6">
           <CardWrapper>
             <CardUpper>
               <LogoWrapper>
-                <img
-                  src={process.env.PUBLIC_URL + "/assets/logo-black.png"}
-                  alt="hotel.in"
-                />
+                <Link
+                  style={{
+                    color: "inherit",
+                    textDecoration: "none",
+                    fontFamily: "inherit",
+                  }}
+                  to="/"
+                >
+                  House{" "}
+                  <span style={{ color: "#11BF8B", fontFamily: "inherit" }}>
+                    Garden
+                  </span>
+                </Link>
               </LogoWrapper>
-              <HotelTag>
-                Raising Comfort to the highest level, Our Hotels & Resorts
-                remain stylish, modern, forward thinking global leader of
-                hospitality.
-              </HotelTag>
+              <HotelTag>Feel Nature In your House</HotelTag>
               <TitleTag>Register</TitleTag>
             </CardUpper>
             <Form onFinish={formik.handleSubmit}>
@@ -158,7 +167,6 @@ export default function Register() {
             </AuthFooter>
           </CardWrapper>
         </FormWrapper>
-        <BannerWrapper className="col-sm-6"></BannerWrapper>
       </div>
     </Wrapper>
   );

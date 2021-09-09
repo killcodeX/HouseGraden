@@ -13,7 +13,8 @@ import {
   LogoWrapper,
   AuthFooter,
   AuthPrivacy,
-  FormLabel, SubmitButton
+  FormLabel,
+  SubmitButton,
 } from "./style";
 //import { receiveLogin } from "../../redux/actions/useractions";
 import { useDispatch } from "react-redux";
@@ -33,20 +34,27 @@ export default function Login() {
   return (
     <Wrapper className="container-fluid">
       <div className="row">
+      {/* <div className="col-sm-6">hi</div> */}
+        <BannerWrapper className="col-sm-6" banner={`${process.env.PUBLIC_URL}/assets/login1.jpg`}></BannerWrapper>
         <FormWrapper className="col-sm-6">
           <CardWrapper>
             <CardUpper>
               <LogoWrapper>
-                <img
-                  src={process.env.PUBLIC_URL + "/assets/logo-black.png"}
-                  alt="hotel.in"
-                />
+                <Link
+                  style={{
+                    color: "inherit",
+                    textDecoration: "none",
+                    fontFamily: "inherit",
+                  }}
+                  to="/"
+                >
+                  House{" "}
+                  <span style={{ color: "#11BF8B", fontFamily: "inherit" }}>
+                    Garden
+                  </span>
+                </Link>
               </LogoWrapper>
-              <HotelTag>
-                Raising Comfort to the highest level, Our Hotels & Resorts
-                remain stylish, modern, forward thinking global leader of
-                hospitality.
-              </HotelTag>
+              <HotelTag>Feel Nature In your House</HotelTag>
               <TitleTag>Login</TitleTag>
             </CardUpper>
             <Form onFinish={formik.handleSubmit}>
@@ -88,7 +96,7 @@ export default function Login() {
             </Form>
             <AuthFooter>
               <AuthPrivacy>
-                By creating your Journal Bit account, you agree to our{" "}
+                By creating your House Garden account, you agree to our{" "}
                 <a href="#">Terms, Data Policy</a> and Cookie Policy.
               </AuthPrivacy>
               <span>
@@ -98,7 +106,6 @@ export default function Login() {
             </AuthFooter>
           </CardWrapper>
         </FormWrapper>
-        <BannerWrapper className="col-sm-6"></BannerWrapper>
       </div>
     </Wrapper>
   );
