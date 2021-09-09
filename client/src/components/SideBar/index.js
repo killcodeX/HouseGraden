@@ -14,7 +14,7 @@ import { getFilterData } from "../../redux/actions/postactions";
 import { useDispatch } from "react-redux";
 
 export default function SideMenus({ sideOpen, setSideOpen }) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("All Data");
   const { width } = useWindowSize();
   const dispatch = useDispatch()
 
@@ -24,10 +24,12 @@ export default function SideMenus({ sideOpen, setSideOpen }) {
   }
 
   function handleRange(val) {
+    setValue("All Data")
     dispatch(getFilterData({"price": val}))
   }
 
   function handleRating(val) {
+    setValue("All Data")
     dispatch(getFilterData({"rating": val}))
   }
 
@@ -62,7 +64,9 @@ export default function SideMenus({ sideOpen, setSideOpen }) {
       <SideBarHeading className="mb-2">Price Range</SideBarHeading>
       <Slider
         range={{ draggableTrack: true }}
-        defaultValue={[20, 80]}
+        min={40}
+        max={20000}
+        defaultValue={[40, 2000]}
         onAfterChange={handleRange}
       />
       <Divider style={{ margin: "14px 0" }} />

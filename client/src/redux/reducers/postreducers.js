@@ -2,6 +2,7 @@ import {
   GetAllProduct,
   GetSingleProduct,
   GetSorted,
+  FilterData
 } from "../actions/constactions";
 
 const initialState = {
@@ -63,8 +64,10 @@ const ProductReducer = (state = initialState, action) => {
           sortP: true
         };
       }
+    case FilterData:
       return {
         ...state,
+        allProducts: action.payload
       };
     default:
       return state;
