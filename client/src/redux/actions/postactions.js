@@ -1,4 +1,4 @@
-import { GetAllProduct, GetSingleProduct } from "./constactions";
+import { GetAllProduct, GetSingleProduct, GetSorted } from "./constactions";
 
 import { getAllProductApi, getSingleProductApi } from "../../api/postApi";
 
@@ -17,4 +17,11 @@ export const getSingleProduct = (id) => async (dispatch) => {
     type: GetSingleProduct,
     payload: result,
   });
+};
+
+export const getProductSorted = (sort) => {
+  return {
+    type: GetSorted,
+    payload: sort,
+  }
 };

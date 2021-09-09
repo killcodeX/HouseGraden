@@ -1,6 +1,8 @@
 import React from "react";
 import { FiSearch } from "react-icons/fi";
 import { Form, Select } from "antd";
+import { useDispatch } from "react-redux";
+import { getProductSorted } from "../../redux/actions/postactions";
 import {
   FlexWrapper,
   FormLabel,
@@ -10,7 +12,10 @@ import {
 } from "./style";
 
 export default function Searchform() {
-  const handleFilter = (data) => {};
+  const dispatch = useDispatch()
+  const handleFilter = (data) => {
+    dispatch(getProductSorted(data))
+  };
   return (
     <FlexWrapper>
       <SearchWrapper>
