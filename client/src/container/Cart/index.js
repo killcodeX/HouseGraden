@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Divider, Steps } from "antd";
 import ProductList from "./productlist";
 import PriceDetail from "./priceDetail";
+import Login from "./steps/login";
+import Address from "./steps/address";
+import Payment from "./steps/payment";
+import { AiOutlineUser, AiOutlineShoppingCart, AiOutlineAudit } from "react-icons/ai"
 import {
   SectionWrapper,
   OrderSummaryCol,
@@ -12,7 +16,12 @@ import {
 const { Step } = Steps;
 
 export default function Cart() {
+  const [currentStep, setCurrentStep] = useState(1);
   let arr = [1];
+
+  const stepChange = (current) => {
+    setCurrentStep(current);
+  };
   return (
     <SectionWrapper>
       <div className="container">
@@ -33,13 +42,14 @@ export default function Cart() {
           <div className="col-sm-12 col-md-7 px-5">
             <SectionSubTitle>CheckOut Process</SectionSubTitle>
             <Divider />
-            <Steps direction="vertical" current={1}>
-              <Step title="Login" description="This is a description." />
-              <Step
-                title="Shipment Address"
-                description="This is a description."
-              />
-              <Step title="Payment" description="This is a description." />
+            <Steps
+              direction="vertical"
+              current={currentStep}
+              onChange={stepChange}
+            >
+              <Step title="Login" icon={<AiOutlineUser/>} description={<Login/>}/>
+              <Step title="Shipment Address" icon={<AiOutlineShoppingCart/>} description={<Address/>}/>
+              <Step title="Payment" icon={<AiOutlineAudit/>} description={<Payment/>}/>
             </Steps>
           </div>
         </div>
