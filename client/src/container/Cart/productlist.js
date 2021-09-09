@@ -6,7 +6,16 @@ import {
   RightSideProduct,
   ProductTitle,
   ProductCategory,
+  PriceWrapper,
+  Reviews
 } from "./style";
+
+
+// Create our number formatter.
+var formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "INR",
+});
 
 export default function Productlist() {
   return (
@@ -24,8 +33,12 @@ export default function Productlist() {
           <ProductTitle>
             Water Lily, Nymphae Nouchali (Red) - Plant
           </ProductTitle>
-          <FlexSection className="mb-1">
+          <FlexSection className="pb-3">
             <ProductCategory>Plants</ProductCategory>
+          </FlexSection>
+          <FlexSection>
+            <PriceWrapper>{formatter.format(749)}</PriceWrapper>
+            <Reviews>{`Quantity: ${123}`}</Reviews>
           </FlexSection>
         </RightSideProduct>
       </FlexSection>
