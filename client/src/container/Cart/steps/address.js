@@ -96,13 +96,13 @@ export default function Address() {
           <div className="col-sm-12 col-md-6">
             <FormLabel>City</FormLabel>
             <Form.Item
-              name="City"
+              name="city"
               rules={[{ required: true, message: "Please input first name!" }]}
             >
               <Input
                 type="text"
                 placeholder="City..."
-                value={formik.values.houseno}
+                value={formik.values.city}
                 onChange={formik.handleChange}
               />
             </Form.Item>
