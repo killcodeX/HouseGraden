@@ -20,9 +20,23 @@ export default function Home() {
 
   if (products?.length == 0) {
     return (
-      <NoDataBanner>
-        <img src={process.env.PUBLIC_URL + "/assets/nodata.png"} alt="nodata" />
-      </NoDataBanner>
+      <HomeWrapper>
+        {width > 1000 ? (
+          <SideMenuWrapper>
+            <SideMenus />
+          </SideMenuWrapper>
+        ) : null}
+        <Searchform />
+        <div className="row mt-5">
+          <span>No Data</span>
+          <NoDataBanner>
+            <img
+              src={process.env.PUBLIC_URL + "/assets/nodata.png"}
+              alt="nodata"
+            />
+          </NoDataBanner>
+        </div>
+      </HomeWrapper>
     );
   }
 

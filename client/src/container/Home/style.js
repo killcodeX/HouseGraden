@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const NoDataBanner = styled.div`
-  padding-top:100px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin:auto;
-  width: 41rem;
-  height: 41rem;
+  width: 31rem;
+  height: 25rem;
   overflow: hidden;
   img {
     width: 100%;
@@ -61,7 +60,7 @@ export const FormLabel = styled.div`
 
 export const SearchWrapper = styled.div`
   position: relative;
-  margin-bottom: 10px;
+  //margin-bottom: 10px;
   //z-index:-1;
 `;
 
@@ -69,8 +68,8 @@ export const SearchIcon = styled.div`
   display: inline-block;
   position: absolute;
   right: 36px;
-  top: 3px;
-  font-size: 27px;
+  top: 0px;
+  font-size: 21px;
   color: #979797;
 
   @media (max-width: 480px) {
@@ -82,11 +81,11 @@ export const SearchIcon = styled.div`
 
 export const SearchBar = styled.input`
   width: 600px;
-  height: 50px;
+  height: 35px;
   border-radius: 14px;
   border: 1px solid #fafafa;
   padding-left: 28px;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 400;
   //background: #fafafa;
   color: #979797;
@@ -94,7 +93,7 @@ export const SearchBar = styled.input`
 
   &:focus {
     outline: none;
-    border: none;
+    //border: none;
   }
 
   @media (max-width: 480px) {
