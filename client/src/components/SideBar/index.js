@@ -10,21 +10,25 @@ import {
 } from "./style";
 import { category } from "../../fakedata";
 import useWindowSize from "../../helpers/windowSize";
+import { getFilterData } from "../../redux/actions/postactions";
+import { useDispatch } from "react-redux";
 
 export default function SideMenus({ sideOpen, setSideOpen }) {
   const [value, setValue] = useState("");
   const { width } = useWindowSize();
+  const dispatch = useDispatch()
 
   function handleChange(checkedValues) {
     setValue(checkedValues.target.value);
+    dispatch(getFilterData("category", checkedValues.target.value));
   }
 
   function handleRange(val) {
-    console.log(val);
+    dispatch(getFilterData("price", val))
   }
 
   function handleRating(val) {
-    console.log(val);
+    dispatch(getFilterData("rating", val))
   }
 
   return (
@@ -59,21 +63,11 @@ export default function SideMenus({ sideOpen, setSideOpen }) {
       <Slider
         range={{ draggableTrack: true }}
         defaultValue={[20, 80]}
-        onChange={handleRange}
+        onAfterChange={handleRange}
       />
       <Divider style={{ margin: "14px 0" }} />
       <SideBarHeading className="mb-2">Rating</SideBarHeading>
       <Rate allowHalf onChange={handleRating} />
     </SideWarpper>
   );
-}
-
-{
-  /* <Form.Item
-  style={{ marginLeft: "10px", marginBottom: "10px" }}
-  key={item.id}
-  onChange={handleChange}
->
-  <Checkbox>{item.title}</Checkbox>
-</Form.Item>; */
 }

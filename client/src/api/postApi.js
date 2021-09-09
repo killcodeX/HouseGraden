@@ -8,7 +8,8 @@ const openNotificationWithIcon = (type, title, message) => {
   });
 };
 
-const baseURL = process.env.NODE_ENV ==='development'? "http://localhost:5000": ""
+const baseURL =
+  process.env.NODE_ENV === "development" ? "http://localhost:5000" : "";
 
 export const ApiFunc = axios.create({ baseURL: baseURL });
 
@@ -21,24 +22,23 @@ ApiFunc.interceptors.request.use((req) => {
   return req;
 });
 
-
 // User Api
 export const getAllProductApi = async () => {
-    try {
-      const { data } = await ApiFunc.get(`/housegarden/get-all-products`);
-      return data;
-    } catch (error) {
-      if (error.response) {
-        openNotificationWithIcon(
-          "error",
-          "Fetching All Products Failed",
-          error.response.data.message
-        );
-      }
+  try {
+    const { data } = await ApiFunc.get(`/housegarden/get-all-products`);
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Fetching All Products Failed",
+        error.response.data.message
+      );
     }
-  };
+  }
+};
 
-  // to get single product
+// to get single product
 export const getSingleProductApi = async (id) => {
   try {
     const { data } = await ApiFunc.get(`/housegarden/single-product/${id}`);
@@ -48,6 +48,21 @@ export const getSingleProductApi = async (id) => {
       openNotificationWithIcon(
         "error",
         "Fetching Single Product Failed",
+        error.response.data.message
+      );
+    }
+  }
+};
+
+export const getFilterProductApi = async (filter) => {
+  try {
+    const { data } = await ApiFunc.get(`/housegarden/filter-product`, filter);
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Fetching Filter Product Failed",
         error.response.data.message
       );
     }
