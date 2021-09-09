@@ -15,6 +15,8 @@ import SingleProduct from "./container/SingleProduct";
 import Cart from "./container/Cart";
 import Orders from "./container/Orders";
 import WishList from "./container/WishList";
+import Login from "./container/Auth/login";
+import Register from "./container/Auth/register";
 
 function App() {
   const { width } = useWindowSize();
@@ -27,6 +29,8 @@ function App() {
         <Route exact path="/my-cart" component={Cart} />
         <Route exact path="/my-orders" component={Orders} />
         <Route exact path="/my-wishlist" component={WishList} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
       </Switch>
       <Footer/>
     </main>
