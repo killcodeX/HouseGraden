@@ -32,6 +32,7 @@ export const getProductSorted = (sort) => {
 };
 
 export const getFilterData = (filter) => async (dispatch) => {
+  console.log('from actions -->',filter)
   const result = await getFilterProductApi(filter)
   dispatch({
     type: FilterData,

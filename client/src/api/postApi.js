@@ -56,7 +56,7 @@ export const getSingleProductApi = async (id) => {
 
 export const getFilterProductApi = async (filter) => {
   try {
-    const { data } = await ApiFunc.get(`/housegarden/filter-product`, filter);
+    const { data } = await ApiFunc.post(`/housegarden/filter-product`, filter);
     return data;
   } catch (error) {
     if (error.response) {

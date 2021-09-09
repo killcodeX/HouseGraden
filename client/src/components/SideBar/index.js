@@ -20,15 +20,15 @@ export default function SideMenus({ sideOpen, setSideOpen }) {
 
   function handleChange(checkedValues) {
     setValue(checkedValues.target.value);
-    dispatch(getFilterData("category", checkedValues.target.value));
+    dispatch(getFilterData({"category": checkedValues.target.value}));
   }
 
   function handleRange(val) {
-    dispatch(getFilterData("price", val))
+    dispatch(getFilterData({"price": val}))
   }
 
   function handleRating(val) {
-    dispatch(getFilterData("rating", val))
+    dispatch(getFilterData({"rating": val}))
   }
 
   return (

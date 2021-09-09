@@ -22,8 +22,6 @@ app.use(cors());
 // sholud be called after initializing cors to avoid cors origin issue
 app.use("/housegarden", gardenRoutes);
 
-console.log(process.env.DB_PASSWORD)
-
 // for database
 const connectionUrl = `mongodb+srv://Aaquib5076:${process.env.DB_PASSWORD}@cluster0.kx4ok.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
