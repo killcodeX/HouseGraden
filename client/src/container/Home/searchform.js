@@ -9,6 +9,8 @@ import {
   SearchWrapper,
   SearchBar,
   SearchIcon,
+  SearchSuggestion,
+  SearchSuggestionItem
 } from "./style";
 
 export default function Searchform() {
@@ -23,6 +25,9 @@ export default function Searchform() {
           <FiSearch />
         </SearchIcon>
         <SearchBar placeholder="Search plants.." />
+        <SearchSuggestion>
+          <SearchSuggestionItem>Hi</SearchSuggestionItem>
+        </SearchSuggestion>
       </SearchWrapper>
       <div>
         <FormLabel>Sort By</FormLabel>

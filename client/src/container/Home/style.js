@@ -4,7 +4,7 @@ export const NoDataBanner = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin:auto;
+  margin: auto;
   width: 31rem;
   height: 25rem;
   overflow: hidden;
@@ -82,7 +82,7 @@ export const SearchIcon = styled.div`
 export const SearchBar = styled.input`
   width: 600px;
   height: 35px;
-  border-radius: 14px;
+  //border-radius: 14px;
   border: 1px solid #fafafa;
   padding-left: 28px;
   font-size: 17px;
@@ -100,5 +100,26 @@ export const SearchBar = styled.input`
     width: 300px;
     height: 36px;
     font-size: 16px;
+  }
+`;
+
+export const SearchSuggestion = styled.div`
+  position: absolute;
+  top:34px;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid #dedede;
+`;
+
+export const SearchSuggestionItem = styled.div`
+  padding: 5px;
+  border-bottom: 1px solid #dedede;
+
+  &:hover {
+    cursor: pointer;
+    color: white;
+    background: #50cd89;
   }
 `;
