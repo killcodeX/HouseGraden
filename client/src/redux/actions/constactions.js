@@ -1,4 +1,8 @@
-
+// for users
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const VERIFY_LOCAL_STORAGE = "VERIFY_LOCAL_STORAGE";
 
 
 // for products
