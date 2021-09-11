@@ -83,6 +83,7 @@ const ProductReducer = (state = initialState, action) => {
       return {
         ...state,
         searchP: false,
+        searchProduct:[]
       };
     default:
       return state;

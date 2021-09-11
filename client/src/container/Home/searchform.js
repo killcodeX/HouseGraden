@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FiSearch, FiX } from "react-icons/fi";
-import { Form, Select } from "antd";
+import { Form, Select, Tooltip } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductSorted } from "../../redux/actions/postactions";
+import { getProductSorted, getSearchData, clearSearchData } from "../../redux/actions/postactions";
 import {
   FlexWrapper,
   FormLabel,
@@ -37,14 +37,21 @@ export default function Searchform() {
 
   const handleSelect = (item) => {
     setSearchValue(item.title);
+    dispatch(getSearchData(item))
     setSuggestions([]);
   };
+
+  const clearSearch = () => {
+    dispatch(clearSearchData())
+    setSearchValue("")
+  }
 
   return (
     <FlexWrapper>
       {/* search input */}
       <SearchWrapper>
-        <SearchIcon>{searchP ? <FiX /> : <FiSearch />}</SearchIcon>
+        <SearchIcon onClick={clearSearch}>{searchP ? 
+        <Tooltip title="clear search"><FiX /></Tooltip> : <FiSearch />}</SearchIcon>
         <SearchBar
           placeholder="Search plants.."
           value={searchValue}

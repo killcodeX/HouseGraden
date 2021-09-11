@@ -72,6 +72,10 @@ export const SearchIcon = styled.div`
   font-size: 21px;
   color: #979797;
 
+  &:hover{
+    cursor:pointer;
+  }
+
   @media (max-width: 480px) {
     right: 28px;
     top: 1px;

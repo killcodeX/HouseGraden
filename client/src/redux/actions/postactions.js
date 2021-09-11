@@ -3,6 +3,8 @@ import {
   GetSingleProduct,
   GetSorted,
   FilterData,
+  SearchData,
+  ClearSearchData
 } from "./constactions";
 
 import { getAllProductApi, getSingleProductApi, getFilterProductApi } from "../../api/postApi";
@@ -37,4 +39,17 @@ export const getFilterData = (filter) => async (dispatch) => {
     type: FilterData,
     payload : result
   })
+}
+
+export const getSearchData = (data) => {
+  return {
+    type: SearchData,
+    payload:[data]
+  }
+}
+
+export const clearSearchData = () => {
+  return {
+    type: ClearSearchData,
+  }
 }
