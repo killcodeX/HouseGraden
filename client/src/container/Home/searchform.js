@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FiSearch } from "react-icons/fi";
+import { FiSearch, FiX } from "react-icons/fi";
 import { Form, Select } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductSorted } from "../../redux/actions/postactions";
@@ -18,45 +18,60 @@ export default function Searchform() {
   const [suggestions, setSuggestions] = useState([]);
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.products.allProducts);
+  const searchP = useSelector((state) => state.products.searchP);
+
   const handleFilter = (data) => {
     dispatch(getProductSorted(data));
   };
 
   const handleChange = (e) => {
+    const value = e.target.value;
     let matches = [];
-
-    if (searchValue.length > 0) {
-      matches = allProducts.filter((item) => {
-        const regex = new RegExp(`${e.target.value}`, "gi");
-        return item.title.match(regex);
-      });
+    if (value.length >= 1) {
+      const regex = new RegExp(`${value}`, "gi");
+      matches = allProducts.filter((item) => regex.test(item.title));
     }
-
     setSuggestions(matches);
-    setSearchValue(e.target.value);
+    setSearchValue(value);
+  };
+
+  const handleSelect = (item) => {
+    setSearchValue(item.title);
+    setSuggestions([]);
   };
 
   return (
     <FlexWrapper>
+      {/* search input */}
       <SearchWrapper>
-        <SearchIcon>
-          <FiSearch />
-        </SearchIcon>
+        <SearchIcon>{searchP ? <FiX /> : <FiSearch />}</SearchIcon>
         <SearchBar
           placeholder="Search plants.."
           value={searchValue}
           onChange={handleChange}
+          onBlur={() => {
+            setTimeout(() => {
+              setSuggestions([]);
+            }, 500);
+          }}
         />
-        {suggestions.length > 0
-          ? suggestions.map((item) => {
+        {suggestions?.length > 1 ? (
+          <SearchSuggestion>
+            {suggestions.map((item) => {
               return (
-                <SearchSuggestion key={item._id}>
-                  <SearchSuggestionItem>{item.title}</SearchSuggestionItem>
-                </SearchSuggestion>
+                <SearchSuggestionItem
+                  key={item._id}
+                  onClick={() => handleSelect(item)}
+                >
+                  {item.title}
+                </SearchSuggestionItem>
               );
-            })
-          : null}
+            })}
+          </SearchSuggestion>
+        ) : null}
       </SearchWrapper>
+
+      {/* for sorting */}
       <div>
         <FormLabel>Sort By</FormLabel>
         <Form.Item style={{ width: "200px" }}>
@@ -74,4 +89,21 @@ export default function Searchform() {
       </div>
     </FlexWrapper>
   );
+}
+
+// matches = allProducts.filter((item) => {
+//   const regex = new RegExp(`${value}`, "gi");
+//   return item.title.match(regex);
+// });
+
+//{item.title}
+
+//onClick={() => handleSelect(item)}
+
+{
+  /* <SearchSuggestion key={item._id}>
+                  <SearchSuggestionItem>
+                    {item}
+                  </SearchSuggestionItem>
+                </SearchSuggestion> */
 }

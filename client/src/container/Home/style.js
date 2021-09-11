@@ -105,14 +105,14 @@ export const SearchBar = styled.input`
 
 export const SearchSuggestion = styled.div`
   position: absolute;
-  top: 34px;
+  //top: 34px;
   left: 0;
   width: 100%;
   background-color: #f5f5f5;
   padding: 5px;
   border: 1px solid #dedede;
-  max-height: 250px;
-  overflow-y: scroll;
+  // height: 250px;
+  // overflow-y: scroll;
 `;
 
 export const SearchSuggestionItem = styled.div`
