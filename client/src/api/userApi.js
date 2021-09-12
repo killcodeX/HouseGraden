@@ -1,3 +1,4 @@
+import { notification } from "antd";
 import { ApiFunc } from "./postApi";
 
 const openNotificationWithIcon = (type, title, message) => {

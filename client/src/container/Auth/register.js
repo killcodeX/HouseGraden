@@ -16,7 +16,7 @@ import {
   FormLabel,
   SubmitButton,
 } from "./style";
-//import { receiveSignUp} from "../../redux/actions/useractions";
+import { receiveSignUp } from "../../redux/actions/authactions";
 import { useDispatch } from "react-redux";
 
 export default function Register() {
@@ -31,7 +31,7 @@ export default function Register() {
       mobile: "",
     },
     onSubmit: (values) => {
-      //dispatch(receiveSignUp(values, history))
+      dispatch(receiveSignUp(values, history))
     },
   });
   return (

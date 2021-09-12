@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   AiOutlineArrowRight,
   AiOutlineRight,
@@ -14,19 +14,19 @@ import {
   RightNavItems,
   IconWrapper,
   ImageAvatar,
-  SideBar,
-  BodyOverlay,
 } from "./style";
 import SideMenus from "../SideBar";
 import OrderSideMenus from "../../container/Orders/sideMenus";
 import useWindowSize from "../../helpers/windowSize";
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Header() {
   const { width } = useWindowSize();
+  const dispatch = useDispatch()
   const location = useLocation();
   const [sideOpen, setSideOpen] = useState(false);
-  let auth = true;
+  const auth = useSelector(state => state.auth.isAuthenticated)
 
   const handlelogout = ({ key }) => {
     if (key == 4) {
@@ -118,7 +118,7 @@ export default function Header() {
                 </Badge>
               </>
             ) : null}
-            <Dropdown overlay={menu} placement="bottomCenter" arrow>
+            <Dropdown overlay={menu} placement="bottomCenter" trigger={['click']}>
               <ImageAvatar>
                 <img
                   src={process.env.PUBLIC_URL + "/assets/150-7.jpg"}

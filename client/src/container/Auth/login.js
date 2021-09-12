@@ -16,7 +16,7 @@ import {
   FormLabel,
   SubmitButton,
 } from "./style";
-//import { receiveLogin } from "../../redux/actions/useractions";
+import { receiveLogin } from "../../redux/actions/authactions";
 import { useDispatch } from "react-redux";
 
 export default function Login() {
@@ -28,7 +28,7 @@ export default function Login() {
       password: "",
     },
     onSubmit: (values) => {
-      //dispatch(receiveLogin(values, history));
+      dispatch(receiveLogin(values, history));
     },
   });
   return (
