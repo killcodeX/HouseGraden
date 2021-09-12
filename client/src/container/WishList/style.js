@@ -12,4 +12,21 @@ export const SectionTitle = styled.div`
   margin-top: 0px;
 `;
 
-export const BannerWrappper = styled.div``;
+export const NoDataBanner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 31rem;
+  height: 25rem;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 480px) {
+    margin: 0 auto;
+  }
+`;
