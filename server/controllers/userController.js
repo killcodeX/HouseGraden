@@ -25,10 +25,7 @@ export const createUser = async (req, res) => {
 
     const token = jwt.sign(
       { email: result.email, id: result._id },
-      process.env.JWT_SECRET_KEY,
-      {
-        expiresIn: "1h",
-      }
+      process.env.JWT_SECRET_KEY
     );
 
     res.status(200).json({ result, token });
