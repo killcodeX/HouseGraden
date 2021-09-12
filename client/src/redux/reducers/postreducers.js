@@ -6,6 +6,7 @@ import {
   SearchData,
   ClearSearchData,
   WishListData,
+  CartData,
 } from "../actions/constactions";
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   searchP: false,
   searchProduct: [],
   wishListProduct: [],
+  cartProduct: [],
 };
 
 // Reducers
@@ -97,6 +99,12 @@ const ProductReducer = (state = initialState, action) => {
       return {
         ...state,
         wishListProduct: action.payload,
+      };
+
+    case CartData:
+      return {
+        ...state,
+        cartProduct: action.payload,
       };
 
     default:

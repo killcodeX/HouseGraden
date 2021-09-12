@@ -84,3 +84,18 @@ export const getWishListProductApi = async () => {
     }
   }
 };
+
+export const getCartProductApi = async () => {
+  try {
+    const { data } = await ApiFunc.get(`/housegarden/cart-products`);
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Fetching Cart Product Failed",
+        error.response.data.message
+      );
+    }
+  }
+};
