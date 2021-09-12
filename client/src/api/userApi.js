@@ -46,7 +46,7 @@ export const userLogin = async (body) => {
 export const likeProduct = async (body) => {
   try {
     const { data } = await ApiFunc.put(`/housegarden/likeproduct`, body);
-    openNotificationWithIcon("success", "Product Added !!", "");
+    openNotificationWithIcon("success", "Product Added to Wishlist !!", "");
     return data;
   } catch (error) {
     if (error.response) {
@@ -62,13 +62,45 @@ export const likeProduct = async (body) => {
 export const unLikeProduct = async (body) => {
   try {
     const { data } = await ApiFunc.put(`/housegarden/unlikeproduct`, body);
-    openNotificationWithIcon("success", "Product Removed !!", "");
+    openNotificationWithIcon("success", "Product Removed from Wishlist!!", "");
     return data;
   } catch (error) {
     if (error.response) {
       openNotificationWithIcon(
         "error",
-        "Removing Product to Wishlist Failed !!",
+        "Removing Product from Wishlist Failed !!",
+        error.response.data.message
+      );
+    }
+  }
+}
+
+export const addProducttoCartApi = async (body) => {
+  try {
+    const { data } = await ApiFunc.put(`/housegarden/add-product-cart`, body);
+    openNotificationWithIcon("success", "Product Added to Cart !!", "");
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Adding Product to Cart Failed !!",
+        error.response.data.message
+      );
+    }
+  }
+}
+
+export const removeProducttocartApi = async (body) => {
+  try {
+    const { data } = await ApiFunc.put(`/housegarden/remove-product-cart`, body);
+    openNotificationWithIcon("success", "Product Removed from Cart !!", "");
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Removing Product from Cart Failed !!",
         error.response.data.message
       );
     }

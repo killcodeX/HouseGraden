@@ -3,7 +3,8 @@ import {
   SIGNUP_SUCCESS,
   LOGOUT_SUCCESS,
   VERIFY_LOCAL_STORAGE,
-  LIKE_UNLIKE_PRODUCT
+  LIKE_UNLIKE_PRODUCT,
+  ADDING_REMOVING_PRODUCT
 } from "./constactions";
 
 import {
@@ -11,6 +12,8 @@ import {
   userLogin,
   likeProduct,
   unLikeProduct,
+  addProducttoCartApi,
+  removeProducttocartApi
 } from "../../api/userApi";
 
 export const receiveLogin = (user, history) => async (dispatch) => {
@@ -70,6 +73,30 @@ export const receiveProductUnlike = (id) => async (dispatch) => {
   try {
     dispatch({
       type: LIKE_UNLIKE_PRODUCT,
+      payload: result.result,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const receiveProductToCart = (id, quantity) => async (dispatch) => {
+  const result = await addProducttoCartApi({ productId: id, quantity: quantity });
+  try {
+    dispatch({
+      type: ADDING_REMOVING_PRODUCT,
+      payload: result.result,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const receiveProductOutCart = (id, quantity) => async (dispatch) => {
+  const result = await removeProducttocartApi({ productId: id, quantity: quantity });
+  try {
+    dispatch({
+      type: ADDING_REMOVING_PRODUCT,
       payload: result.result,
     });
   } catch (error) {

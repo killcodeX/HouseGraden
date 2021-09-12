@@ -98,14 +98,14 @@ export const getunlikeProduct = async (req, res) => {
 export const getProductInCart = async (req, res) => {
   const { productId, quantity } = req.body;
   try {
-    // const result = await UserMessage.findByIdAndUpdate(
-    //   req.userId,
-    //   {
-    //     $push: { wishlist: productId },
-    //   },
-    //   { new: true }
-    // );
-    // res.status(200).json({ result: result });
+    const result = await UserMessage.findByIdAndUpdate(
+      req.userId,
+      {
+        $push: { cart: {productId :productId, quantity: quantity }},
+      },
+      { new: true }
+    );
+    res.status(200).json({ result: result });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -114,14 +114,14 @@ export const getProductInCart = async (req, res) => {
 export const getProductOutCart = async (req, res) => {
   const { productId, quantity } = req.body;
   try {
-  //   const result = await UserMessage.findByIdAndUpdate(
-  //     req.userId,
-  //     {
-  //       $pull: { wishlist: productId },
-  //     },
-  //     { new: true }
-  //   );
-  //   res.status(200).json({ result: result });
+    const result = await UserMessage.findByIdAndUpdate(
+      req.userId,
+      {
+        $pull: { cart: {productId :productId, quantity: quantity }},
+      },
+      { new: true }
+    );
+    res.status(200).json({ result: result });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

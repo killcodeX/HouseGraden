@@ -4,6 +4,7 @@ import {
   SIGNUP_SUCCESS,
   VERIFY_LOCAL_STORAGE,
   LIKE_UNLIKE_PRODUCT,
+  ADDING_REMOVING_PRODUCT,
 } from "../actions/constactions";
 
 import { saveState, loadState } from "../../helpers/localStrorage";
@@ -52,6 +53,13 @@ const AuthReducer = (state = initialState, action) => {
       };
 
     case LIKE_UNLIKE_PRODUCT:
+      saveState("houseGardenUser", action.payload);
+      return {
+        ...state,
+        user: action.payload,
+      };
+
+    case ADDING_REMOVING_PRODUCT:
       saveState("houseGardenUser", action.payload);
       return {
         ...state,

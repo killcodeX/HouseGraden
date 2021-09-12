@@ -16,6 +16,11 @@ import ProductDetail from "./productDetail";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getSingleProduct } from "../../redux/actions/postactions";
+import {
+  receiveProductToCart,
+  receiveProductUnlike,
+  receiveProductLike,
+} from "../../redux/actions/authactions";
 
 // Create our number formatter.
 var formatter = new Intl.NumberFormat("en-US", {
@@ -27,10 +32,9 @@ export default function SingleProduct() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const product = useSelector((state) => state.products.singleProduct);
+  const user = useSelector((state) => state.auth.user);
   const [like, setLike] = useState(false);
   const [numberItem, setNumberItem] = useState(1);
-
-  console.log(product)
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
@@ -40,8 +44,20 @@ export default function SingleProduct() {
     setNumberItem(value);
   }
 
-  if(!product?.image){
-    return <span>loading...</span>
+  const handleLikeUnlike = (id) => {
+    if (user.wishlist.includes(id)) {
+      dispatch(receiveProductUnlike(id));
+    } else {
+      dispatch(receiveProductLike(id));
+    }
+  };
+
+  const handleCart = (id) => {
+    dispatch(receiveProductToCart(id, numberItem));
+  };
+
+  if (!product?.image) {
+    return <span>loading...</span>;
   }
 
   return (
@@ -66,7 +82,9 @@ export default function SingleProduct() {
             </ProductReview>
             <ProductDescription>{product.description}</ProductDescription>
             <CartSection>
-              <ProductPrice>{formatter.format(product.price * numberItem)}</ProductPrice>
+              <ProductPrice>
+                {formatter.format(product.price * numberItem)}
+              </ProductPrice>
               <div>
                 <span className="px-3">Quantity:</span>
                 <InputNumber
@@ -78,20 +96,22 @@ export default function SingleProduct() {
               </div>
             </CartSection>
             <CartSection>
-              <AddCartButton>Add to Cart</AddCartButton>
-              <WishListButton onClick={() => setLike(!like)}>
-                {like ? (
-                  <AiFillHeart style={{ color: "#FF4345", fontSize: "25px" }} />
+              <AddCartButton onClick={() => handleCart(product._id)}>
+                Add to Cart
+              </AddCartButton>
+              <WishListButton onClick={() => handleLikeUnlike(product._id)}>
+                {user?.wishlist?.includes(product._id) ? (
+                  <AiFillHeart style={{ color: "#FF4345" }} />
                 ) : (
-                  <AiOutlineHeart style={{ fontSize: "25px" }} />
+                  <AiOutlineHeart />
                 )}
-                <span className="px-2">Add to wish List</span>
+                <span className="px-2">{user.wishlist.includes(product._id)? 'Remove from WishList ':'Add to WishList'}</span>
               </WishListButton>
             </CartSection>
           </div>
         </div>
         <Divider />
-        <ProductDetail product={product}/>
+        <ProductDetail product={product} />
       </div>
     </SectionWrapper>
   );
