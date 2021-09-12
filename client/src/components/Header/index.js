@@ -3,9 +3,10 @@ import {
   AiOutlineArrowRight,
   AiOutlineRight,
   AiOutlineMenuUnfold,
+  AiOutlineUser,
 } from "react-icons/ai";
 import { BsBag, BsHeart } from "react-icons/bs";
-import { Menu, Dropdown, Badge } from "antd";
+import { Menu, Dropdown, Badge, Avatar } from "antd";
 import {
   NavBar,
   NavItems,
@@ -13,31 +14,33 @@ import {
   LogoWrapper,
   RightNavItems,
   IconWrapper,
-  ImageAvatar,
+  BookButton,
 } from "./style";
 import SideMenus from "../SideBar";
 import OrderSideMenus from "../../container/Orders/sideMenus";
 import useWindowSize from "../../helpers/windowSize";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { receiveLogout } from "../../redux/actions/authactions";
 
 export default function Header() {
   const { width } = useWindowSize();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const location = useLocation();
   const [sideOpen, setSideOpen] = useState(false);
-  const auth = useSelector(state => state.auth.isAuthenticated)
+  const auth = useSelector((state) => state.auth.isAuthenticated);
+  const user = useSelector((state) => state.auth.user);
 
   const handlelogout = ({ key }) => {
     if (key == 4) {
-      console.log("log out done !!");
+      dispatch(receiveLogout());
     }
   };
 
-  if(sideOpen){
-    document.body.classList.add('overlay');
-  } else{
-    document.body.classList.remove('overlay');
+  if (sideOpen) {
+    document.body.classList.add("overlay");
+  } else {
+    document.body.classList.remove("overlay");
   }
 
   const menu = (
@@ -60,7 +63,7 @@ export default function Header() {
         </>
       ) : (
         <Menu.Item key="2" icon={<AiOutlineRight />}>
-          Login
+          <Link to="/login">Login</Link>
         </Menu.Item>
       )}
     </Menu>
@@ -118,17 +121,34 @@ export default function Header() {
                 </Badge>
               </>
             ) : null}
-            <Dropdown overlay={menu} placement="bottomCenter" trigger={['click']}>
-              <ImageAvatar>
-                <img
-                  src={process.env.PUBLIC_URL + "/assets/150-7.jpg"}
-                  alt="profile"
+            <Dropdown
+              overlay={menu}
+              placement="bottomCenter"
+              trigger={["click"]}
+              arrow
+            >
+              {auth ? (
+                <Avatar
+                  style={{ color: "#11BF8B", backgroundColor: "#EDFAFF" }}
+                >
+                  {user?.fname[0] + user?.lname[0]}
+                </Avatar>
+              ) : (
+                <Avatar
+                  style={{ color: "#11BF8B", backgroundColor: "#EDFAFF" }}
+                  icon={<AiOutlineUser />}
                 />
-              </ImageAvatar>
+              )}
             </Dropdown>
           </RightNavItems>
         </NavItems>
       </div>
     </NavBar>
   );
+}
+
+{
+  /* <ImageAvatar>
+  <img src={process.env.PUBLIC_URL + "/assets/150-7.jpg"} alt="profile" />
+</ImageAvatar>; */
 }

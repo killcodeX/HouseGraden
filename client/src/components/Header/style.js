@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 export const NavBar = styled.div`
   position: fixed;
-  top:0;
-  background:white;
+  top: 0;
+  background: white;
   display: flex;
   align-items: center;
   width: 100%;
   padding: 10px 25px;
   min-height: 82px;
   border-bottom: 1px solid #c8beaa;
-  z-index:1;
+  z-index: 1;
 
   @media (max-width: 480px) {
     padding: 10px 5px;
@@ -18,9 +18,7 @@ export const NavBar = styled.div`
   }
 `;
 
-export const SideBar = styled.div`
-  
-`;
+export const SideBar = styled.div``;
 
 export const NavItems = styled.div`
   display: flex;
@@ -51,7 +49,7 @@ export const RightNavItems = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 160px;
+  width: 170px;
 
   @media (max-width: 480px) {
     width: 65px;
@@ -77,6 +75,24 @@ export const ImageAvatar = styled.div`
     height: 100%;
     object-fit: cover;
   }
+`;
+
+export const UserProfile = styled.div`
+    border: 1px solid #50cd89;
+    padding: 3px 6px;
+`;
+
+export const BookButton = styled.button`
+  min-width: 130px;
+  height: 40px;
+  color: #ffffff;
+  background-color: #50cd89;
+  border-radius: 0 3px 3px 0;
+  border: 0;
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 700;
+  text-shadow: none;
 `;
 
 // for body

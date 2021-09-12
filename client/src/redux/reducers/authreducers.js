@@ -51,9 +51,8 @@ const AuthReducer = (state = initialState, action) => {
 
     case VERIFY_LOCAL_STORAGE:
       const auth = loadState("houseGardenLoggedIn");
-      const user = loadState("houseGardennUser");
+      const user = loadState("houseGardenUser");
       const token = loadState("houseGardentoken");
-      console.log(auth, user);
       return {
         ...state,
         isAuthenticated: auth,
