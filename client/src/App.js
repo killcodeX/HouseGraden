@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     dispatch(verifyStorage());
-  }, [auth]);
+  }, []);
 
   return (
     <main className="position-relative">

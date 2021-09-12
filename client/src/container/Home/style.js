@@ -33,7 +33,7 @@ export const SideMenuWrapper = styled.div`
   position: fixed;
   left: 0;
   top: 82px;
-  z-index: 1;
+  z-index: 5;
   background-color: white;
   width: 250px;
   height: 100vh;
@@ -47,6 +47,7 @@ export const FlexWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index:1;
 
   @media (max-width: 480px) {
     justify-content: center;

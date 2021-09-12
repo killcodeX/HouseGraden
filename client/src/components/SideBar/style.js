@@ -4,7 +4,7 @@ export const SideWarpper = styled.div`
   position: fixed;
   left: 0;
   top: 82px;
-  z-index: 10;
+  z-index: 5;
   background-color: white;
   width: 250px;
   height: 100vh;
@@ -12,7 +12,7 @@ export const SideWarpper = styled.div`
   border-right:1px solid #c8beaa;
   transition: left 0.5s ease-out;
 
-  media(max-width:480px){
+  @media(max-width:480px){
     top:0;
   }
 `;

@@ -10,7 +10,7 @@ import { saveState, loadState } from "../../helpers/localStrorage";
 const initialState = {
   isAuthenticated: loadState("houseGardenLoggedIn") || false,
   token: "",
-  user: {},
+  user: loadState("houseGardenUser") || {},
   inCheckOut: false,
 };
 
@@ -20,7 +20,7 @@ const AuthReducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       saveState("houseGardenLoggedIn", true);
       saveState("houseGardenUser", action.user);
-      saveState("houseGardenLoggedIntoken", action.token);
+      saveState("houseGardentoken", action.token);
       return {
         ...state,
         isAuthenticated: true,
@@ -31,7 +31,7 @@ const AuthReducer = (state = initialState, action) => {
     case SIGNUP_SUCCESS:
       saveState("houseGardenLoggedIn", true);
       saveState("houseGardenUser", action.user);
-      saveState("houseGardetoken", action.token);
+      saveState("houseGardentoken", action.token);
       return {
         ...state,
         isAuthenticated: true,
