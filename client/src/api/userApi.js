@@ -41,3 +41,36 @@ export const userLogin = async (body) => {
     }
   }
 };
+
+
+export const likeProduct = async (body) => {
+  try {
+    const { data } = await ApiFunc.put(`/housegarden/likeproduct`, body);
+    openNotificationWithIcon("success", "Product Added !!", "");
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Adding Product to Wishlist Failed !!",
+        error.response.data.message
+      );
+    }
+  }
+}
+
+export const unLikeProduct = async (body) => {
+  try {
+    const { data } = await ApiFunc.put(`/housegarden/unlikeproduct`, body);
+    openNotificationWithIcon("success", "Product Removed !!", "");
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Removing Product to Wishlist Failed !!",
+        error.response.data.message
+      );
+    }
+  }
+}
