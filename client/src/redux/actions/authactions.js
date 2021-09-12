@@ -54,26 +54,24 @@ export const verifyStorage = () => {
 };
 
 export const receiveProductLike = (id) => async (dispatch) => {
-  const result = await likeProduct({ id: id });
+  const result = await likeProduct({ productId: id });
   try {
-    // dispatch({
-    //   type: LIKE_UNLIKE_PRODUCT,
-    //   user: result.result,
-    //   token: result.token,
-    // });
+    dispatch({
+      type: LIKE_UNLIKE_PRODUCT,
+      payload: result.result,
+    });
   } catch (error) {
     console.log(error);
   }
 };
 
 export const receiveProductUnlike = (id) => async (dispatch) => {
-  const result = await unLikeProduct({ id: id });
+  const result = await unLikeProduct({ productId: id });
   try {
-    // dispatch({
-    //   type: LIKE_UNLIKE_PRODUCT,
-    //   user: result.result,
-    //   token: result.token,
-    // });
+    dispatch({
+      type: LIKE_UNLIKE_PRODUCT,
+      payload: result.result,
+    });
   } catch (error) {
     console.log(error);
   }

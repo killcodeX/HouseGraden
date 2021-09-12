@@ -28,17 +28,16 @@ var formatter = new Intl.NumberFormat("en-US", {
 });
 
 export default function ProductCard({ item }) {
-  const dispatch = useDispatch()
-  const [like, setLike] = useState(false);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
 
   const handleLikeUnlike = (id) => {
-    if(like){
-      dispatch(receiveProductUnlike(id))
-    }else{
-      dispatch(receiveProductLike(id))
+    if (user.wishlist.includes(id)) {
+      dispatch(receiveProductUnlike(id));
+    } else {
+      dispatch(receiveProductLike(id));
     }
-    setLike(!like)
-  }
+  };
 
   return (
     <ProductCardWrapper>
@@ -65,13 +64,15 @@ export default function ProductCard({ item }) {
               By Now
             </Link>
           </BookButton>
-          <LoveWrapper onClick={() => handleLikeUnlike(item._id)}>
-            {like ? (
-              <AiFillHeart style={{ color: "#FF4345" }} />
-            ) : (
-              <AiOutlineHeart />
-            )}
-          </LoveWrapper>
+          {user?.wishlist ? (
+            <LoveWrapper onClick={() => handleLikeUnlike(item._id)}>
+              {user?.wishlist?.includes(item._id) ? (
+                <AiFillHeart style={{ color: "#FF4345" }} />
+              ) : (
+                <AiOutlineHeart />
+              )}
+            </LoveWrapper>
+          ) : null}
         </ReviewWrapper>
       </CardDetails>
     </ProductCardWrapper>

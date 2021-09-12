@@ -2,7 +2,6 @@ import UserMessage from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-// POST Controllers
 
 // for signup
 export const createUser = async (req, res) => {
@@ -64,38 +63,32 @@ export const loginUser = async (req, res) => {
 };
 
 export const getlikeProduct = async (req, res) => {
-  const { postId } = req.body;
-  console.log("for like -->", postId);
-  console.log(req.userId);
-
+  const { productId } = req.body;
   try {
-    // const result = await PostMessage.findByIdAndUpdate(
-    //   postId,
-    //   {
-    //     $push: { likes: req.userId },
-    //   },
-    //   { new: true }
-    // );
-    // res.status(200).json({ result: result });
+    const result = await UserMessage.findByIdAndUpdate(
+      req.userId,
+      {
+        $push: { wishlist: productId },
+      },
+      { new: true }
+    );
+    res.status(200).json({ result: result });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
 
 export const getunlikeProduct = async (req, res) => {
-  const { postId } = req.body;
-  console.log("for like -->", postId);
-  console.log(req.userId);
-
+  const { productId } = req.body;
   try {
-    // const result = await PostMessage.findByIdAndUpdate(
-    //   postId,
-    //   {
-    //     $push: { likes: req.userId },
-    //   },
-    //   { new: true }
-    // );
-    // res.status(200).json({ result: result });
+    const result = await UserMessage.findByIdAndUpdate(
+      req.userId,
+      {
+        $pull: { wishlist: productId },
+      },
+      { new: true }
+    );
+    res.status(200).json({ result: result });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
