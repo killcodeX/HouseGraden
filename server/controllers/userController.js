@@ -93,3 +93,36 @@ export const getunlikeProduct = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+
+export const getProductInCart = async (req, res) => {
+  const { productId, quantity } = req.body;
+  try {
+    // const result = await UserMessage.findByIdAndUpdate(
+    //   req.userId,
+    //   {
+    //     $push: { wishlist: productId },
+    //   },
+    //   { new: true }
+    // );
+    // res.status(200).json({ result: result });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export const getProductOutCart = async (req, res) => {
+  const { productId, quantity } = req.body;
+  try {
+  //   const result = await UserMessage.findByIdAndUpdate(
+  //     req.userId,
+  //     {
+  //       $pull: { wishlist: productId },
+  //     },
+  //     { new: true }
+  //   );
+  //   res.status(200).json({ result: result });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};

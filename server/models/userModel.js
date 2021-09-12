@@ -9,6 +9,9 @@ const postSchema = new mongoose.Schema({
   password: { type: String, required: true },
   mobile: { type: String, required: true },
   wishlist: [{ type: ObjectId, ref: "ProductMessage" }],
+  cart: [
+    { productId: { type: ObjectId, ref: "ProductMessage" }, quantity: Number },
+  ],
   createdAt: {
     type: Date,
     default: new Date(),
