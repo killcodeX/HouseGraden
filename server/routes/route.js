@@ -12,6 +12,7 @@ import {
   getAllProduct,
   getSingleProduct,
   getWishlistProduct,
+  getCartProduct
 } from "../controllers/getController.js";
 import { filterProduct } from "../controllers/postController.js";
 import { AuthenticateToken } from "../middlewares/tokenValidate.js";
@@ -32,5 +33,6 @@ router.get("/single-product/:id", getSingleProduct);
 router.post("/create-product", createProduct);
 router.post("/filter-product", filterProduct);
 router.get("/wishlist-products", AuthenticateToken, getWishlistProduct);
+router.get("/cart-products", AuthenticateToken, getCartProduct);
 
 export default router;
