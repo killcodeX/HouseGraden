@@ -4,10 +4,16 @@ import {
   GetSorted,
   FilterData,
   SearchData,
-  ClearSearchData
+  ClearSearchData,
+  WishListData
 } from "./constactions";
 
-import { getAllProductApi, getSingleProductApi, getFilterProductApi } from "../../api/postApi";
+import {
+  getAllProductApi,
+  getSingleProductApi,
+  getFilterProductApi,
+  getWishListProductApi,
+} from "../../api/postApi";
 
 // actions
 export const getAllProduct = () => async (dispatch) => {
@@ -34,22 +40,30 @@ export const getProductSorted = (sort) => {
 };
 
 export const getFilterData = (filter) => async (dispatch) => {
-  const result = await getFilterProductApi(filter)
+  const result = await getFilterProductApi(filter);
   dispatch({
     type: FilterData,
-    payload : result
-  })
-}
+    payload: result,
+  });
+};
 
 export const getSearchData = (data) => {
   return {
     type: SearchData,
-    payload:[data]
-  }
-}
+    payload: [data],
+  };
+};
 
 export const clearSearchData = () => {
   return {
     type: ClearSearchData,
-  }
-}
+  };
+};
+
+export const getWishListData = () => async (dispatch) => {
+  const result = await getWishListProductApi();
+  dispatch({
+    type: WishListData,
+    payload: result,
+  });
+};

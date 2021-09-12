@@ -5,6 +5,7 @@ import {
   FilterData,
   SearchData,
   ClearSearchData,
+  WishListData,
 } from "../actions/constactions";
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
   sortedProduct: [],
   searchP: false,
   searchProduct: [],
+  wishListProduct: [],
 };
 
 // Reducers
@@ -25,11 +27,13 @@ const ProductReducer = (state = initialState, action) => {
         allProducts: action.payload || [],
         sortedProduct: action.payload,
       };
+
     case GetSingleProduct:
       return {
         ...state,
         singleProduct: action.payload,
       };
+
     case GetSorted:
       let sortOption = action.payload;
       let AllProductsData = [...state.sortedProduct];
@@ -68,23 +72,33 @@ const ProductReducer = (state = initialState, action) => {
           sortP: true,
         };
       }
+
     case FilterData:
       return {
         ...state,
         allProducts: action.payload,
       };
+
     case SearchData:
       return {
         ...state,
         searchP: true,
         searchProduct: action.payload,
       };
+
     case ClearSearchData:
       return {
         ...state,
         searchP: false,
-        searchProduct:[]
+        searchProduct: [],
       };
+
+    case WishListData:
+      return {
+        ...state,
+        wishListProduct: action.payload,
+      };
+
     default:
       return state;
   }

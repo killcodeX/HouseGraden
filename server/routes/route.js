@@ -1,7 +1,7 @@
 import express from "express";
 import { createUser, loginUser, getlikeProduct, getunlikeProduct } from "../controllers/userController.js";
 import { createProduct } from "../controllers/createController.js";
-import { getAllProduct, getSingleProduct } from "../controllers/getController.js";
+import { getAllProduct, getSingleProduct, getWishlistProduct } from "../controllers/getController.js";
 import { filterProduct } from "../controllers/postController.js";
 import { AuthenticateToken } from "../middlewares/tokenValidate.js";
 
@@ -18,5 +18,6 @@ router.get("/get-all-products", getAllProduct);
 router.get("/single-product/:id", getSingleProduct)
 router.post("/create-product", createProduct);
 router.post("/filter-product", filterProduct);
+router.get("/wishlist-products", AuthenticateToken, getWishlistProduct)
 
 export default router;

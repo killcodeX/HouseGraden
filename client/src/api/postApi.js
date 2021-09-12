@@ -68,3 +68,19 @@ export const getFilterProductApi = async (filter) => {
     }
   }
 };
+
+
+export const getWishListProductApi = async () => {
+  try {
+    const { data } = await ApiFunc.get(`/housegarden/wishlist-products`);
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Fetching Wishlist Product Failed",
+        error.response.data.message
+      );
+    }
+  }
+};
