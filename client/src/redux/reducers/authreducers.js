@@ -3,6 +3,7 @@ import {
   LOGOUT_SUCCESS,
   SIGNUP_SUCCESS,
   VERIFY_LOCAL_STORAGE,
+  LIKE_UNLIKE_PRODUCT
 } from "../actions/constactions";
 
 import { saveState, loadState } from "../../helpers/localStrorage";
@@ -38,10 +39,20 @@ const AuthReducer = (state = initialState, action) => {
         user: action.user,
         token: action.token,
       };
+
     case LOGOUT_SUCCESS:
       saveState("houseGardenLoggedIn", false);
       saveState("houseGardenUser", {});
       saveState("houseGardentoken", "");
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: {},
+        token: "",
+      };
+
+    case LIKE_UNLIKE_PRODUCT:
+      saveState("houseGardenUser", {});
       return {
         ...state,
         isAuthenticated: false,

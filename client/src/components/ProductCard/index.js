@@ -15,6 +15,11 @@ import {
   BookButton,
   LoveWrapper,
 } from "./style";
+import {
+  receiveProductLike,
+  receiveProductUnlike,
+} from "../../redux/actions/authactions";
+import { useDispatch, useSelector } from "react-redux";
 
 // Create our number formatter.
 var formatter = new Intl.NumberFormat("en-US", {
@@ -23,7 +28,18 @@ var formatter = new Intl.NumberFormat("en-US", {
 });
 
 export default function ProductCard({ item }) {
+  const dispatch = useDispatch()
   const [like, setLike] = useState(false);
+
+  const handleLikeUnlike = (id) => {
+    if(like){
+      dispatch(receiveProductUnlike(id))
+    }else{
+      dispatch(receiveProductLike(id))
+    }
+    setLike(!like)
+  }
+
   return (
     <ProductCardWrapper>
       <ImageWrapper src={item.image} alt={item.title} />
@@ -49,7 +65,7 @@ export default function ProductCard({ item }) {
               By Now
             </Link>
           </BookButton>
-          <LoveWrapper onClick={() => setLike(!like)}>
+          <LoveWrapper onClick={() => handleLikeUnlike(item._id)}>
             {like ? (
               <AiFillHeart style={{ color: "#FF4345" }} />
             ) : (

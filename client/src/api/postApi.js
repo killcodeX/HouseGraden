@@ -14,9 +14,9 @@ const baseURL =
 export const ApiFunc = axios.create({ baseURL: baseURL });
 
 ApiFunc.interceptors.request.use((req) => {
-  if (localStorage.getItem("housegardentoken")) {
+  if (localStorage.getItem("houseGardentoken")) {
     req.headers.Authorization = `Bearer ${JSON.parse(
-      localStorage.getItem("housegardentoken")
+      localStorage.getItem("houseGardentoken")
     )}`;
   }
   return req;
