@@ -29,9 +29,9 @@ export const getWishlistProduct = async (req, res) => {
   let products = [];
   try {
     let user = await UserMessage.findById(req.userId);
-    for (let i = 0; i < user.wishlist; i++) {
-      let data = await ProductMessage.findById(user.wishlist[i]);
-      products.push(data);
+    for(let i = 0; i < user.wishlist.length; i++){
+      let data = await ProductMessage.findById(user.wishlist[i])
+      products.push(data)
     }
     res.status(200).json(products);
   } catch (error) {

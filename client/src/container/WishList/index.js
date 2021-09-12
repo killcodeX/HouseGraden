@@ -19,13 +19,18 @@ export default function WishList() {
       <div className="container">
         <SectionTitle>My WishList</SectionTitle>
         <div className="row mt-4">
-          {arr.map((item) => {
-            return (
-              <div key={item} className="col-sm-12 col-md-6 mb-4">
-                <SimpleProduct />
-              </div>
-            );
-          })}
+          {
+            products.length > 0?
+            products.map((item) => {
+              return (
+                <div key={item} className="col-sm-12 col-md-6 mb-4">
+                  <SimpleProduct item={item}/>
+                </div>
+              );
+            }): (
+              <span>Loading...</span>
+            )
+          }
         </div>
       </div>
     </SectionWrapper>

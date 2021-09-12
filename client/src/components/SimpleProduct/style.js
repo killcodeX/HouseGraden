@@ -39,6 +39,7 @@ export const FlexSection = styled.div`
 
 export const RightSideProduct = styled.div`
   padding-left: 20px;
+  width:300px;
 
   @media (max-width: 480px) {
     padding-left: 10px;

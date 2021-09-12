@@ -14,6 +14,12 @@ import {
   BookButton,
   LoveWrapper,
 } from "./style";
+import {
+  receiveProductLike,
+  receiveProductUnlike,
+} from "../../redux/actions/authactions";
+import { useDispatch, useSelector } from "react-redux";
+
 
 // Create our number formatter.
 var formatter = new Intl.NumberFormat("en-US", {
@@ -21,35 +27,39 @@ var formatter = new Intl.NumberFormat("en-US", {
   currency: "INR",
 });
 
-export default function SimpleProduct() {
-  const [like, setLike] = useState(true);
+export default function SimpleProduct({ item }) {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+
+  const handleLikeUnlike = (id) => {
+    if (user.wishlist.includes(id)) {
+      dispatch(receiveProductUnlike(id));
+    } else {
+      dispatch(receiveProductLike(id));
+    }
+  };
+
+
   return (
     <ProductCardWrapper>
       <FlexSection>
         <ProductImageWrapper>
-          <img
-            src={
-              "https://cdn.shopify.com/s/files/1/0047/9730/0847/products/nurserylive-top-4-die-hard-succulents-pack_4368a560-5bb3-426a-bcfc-a30560e365b1_504x504.jpg?v=1612688579"
-            }
-            alt="product"
-          />
+          <img src={item.image} alt={item.title} />
         </ProductImageWrapper>
         <RightSideProduct>
-          <ProductTitle>
-            Water Lily, Nymphae Nouchali (Red) - Plant
-          </ProductTitle>
-          <FlexSection className='mb-1'>
-            <ProductCategory>Plants</ProductCategory>
-            <Rate style={{ fontSize: "16px" }} value={4.2} />
+          <ProductTitle>{item.title}</ProductTitle>
+          <FlexSection className="mb-1">
+            <ProductCategory>{item.category}</ProductCategory>
+            <Rate disabled style={{ fontSize: "16px" }} value={item.rating} />
           </FlexSection>
-          <FlexSection className='mb-3'>
-            <PriceWrapper>{formatter.format(749)}</PriceWrapper>
-            <Reviews>{`${123} Reviews`}</Reviews>
+          <FlexSection className="mb-3">
+            <PriceWrapper>{formatter.format(item.price)}</PriceWrapper>
+            <Reviews>{`${item.totalReviews} Reviews`}</Reviews>
           </FlexSection>
           <FlexSection>
             <BookButton>Add To Cart</BookButton>
-            <LoveWrapper onClick={() => setLike(!like)}>
-              {like ? (
+            <LoveWrapper onClick={() => handleLikeUnlike(item._id)}>
+              {user?.wishlist?.includes(item._id) ? (
                 <AiFillHeart style={{ color: "#FF4345" }} />
               ) : (
                 <AiOutlineHeart />
