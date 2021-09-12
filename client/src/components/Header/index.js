@@ -107,14 +107,14 @@ export default function Header() {
               <>
                 <Badge dot offset={[-2, 5]}>
                   <IconWrapper>
-                    <Link style={{ color: "inherit" }} to="/my-cart">
+                    <Link style={{ color: "inherit" }} to={auth? "/my-cart": "/login"}>
                       <BsBag />
                     </Link>
                   </IconWrapper>
                 </Badge>
                 <Badge dot offset={[-1, 2]}>
                   <IconWrapper>
-                    <Link style={{ color: "inherit" }} to="/my-wishlist">
+                    <Link style={{ color: "inherit" }} to={auth? "/my-wishlist" : "/login"}>
                       <BsHeart />
                     </Link>
                   </IconWrapper>
