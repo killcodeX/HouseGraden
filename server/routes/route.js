@@ -16,6 +16,7 @@ import {
 } from "../controllers/getController.js";
 import { filterProduct } from "../controllers/postController.js";
 import { AuthenticateToken } from "../middlewares/tokenValidate.js";
+import { addAddressToOrder } from "../controllers/putController.js"
 
 const router = express.Router();
 
@@ -34,5 +35,6 @@ router.post("/create-product", createProduct);
 router.post("/filter-product", filterProduct);
 router.get("/wishlist-products", AuthenticateToken, getWishlistProduct);
 router.get("/cart-products", AuthenticateToken, getCartProduct);
+router.put("/add-address", AuthenticateToken, addAddressToOrder)
 
 export default router;
