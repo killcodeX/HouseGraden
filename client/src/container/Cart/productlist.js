@@ -8,7 +8,10 @@ import {
   ProductCategory,
   PriceWrapper,
   Reviews,
+  IconWrapper
 } from "./style";
+import { AiOutlineDelete } from "react-icons/ai";
+import { useDispatch } from "react-redux";
 
 // Create our number formatter.
 var formatter = new Intl.NumberFormat("en-US", {
@@ -17,6 +20,13 @@ var formatter = new Intl.NumberFormat("en-US", {
 });
 
 export default function Productlist({ item }) {
+  const dispatch = useDispatch()
+
+  const handleDelete = () => {
+    dispatch()
+  }
+
+
   return (
     <ProductListWrapper>
       <FlexSection>
@@ -27,10 +37,13 @@ export default function Productlist({ item }) {
           <ProductTitle>{item.title}</ProductTitle>
           <FlexSection className="pb-3">
             <ProductCategory>{item.category}</ProductCategory>
+            <Reviews>{`Quantity: ${item.quantity}`}</Reviews>
           </FlexSection>
           <FlexSection>
             <PriceWrapper>{formatter.format(item.price)}</PriceWrapper>
-            <Reviews>{`Quantity: ${item.quantity}`}</Reviews>
+            <IconWrapper onClick={() => handleDelete(item._id)}>
+              <AiOutlineDelete />
+            </IconWrapper>
           </FlexSection>
         </RightSideProduct>
       </FlexSection>

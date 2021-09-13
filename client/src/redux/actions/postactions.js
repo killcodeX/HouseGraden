@@ -7,6 +7,7 @@ import {
   ClearSearchData,
   WishListData,
   CartData,
+  Removing_Product_Wishlist
 } from "./constactions";
 
 import {
@@ -69,6 +70,13 @@ export const getWishListData = () => async (dispatch) => {
     payload: result,
   });
 };
+
+export const RemovingProduct = (id) => {
+  return{
+    type: Removing_Product_Wishlist,
+    payload: id,
+  }
+}
 
 export const getCartData = () => async (dispatch) => {
   const result = await getCartProductApi();

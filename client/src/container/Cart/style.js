@@ -20,8 +20,7 @@ export const SectionSubTitle = styled.div`
 
 export const OrderSummaryCol = styled.div`
   border-right: 1px solid #c8beaa;
-  padding-right:20px;
-
+  padding-right: 20px;
 `;
 
 // price details
@@ -43,7 +42,6 @@ export const DiscountWrapper = styled.span`
   color: #ff4867;
   font: 400 0.8rem / 1.33 "Helvetica Neue", Helvetica, Arial, sans-serif;
 `;
-
 
 // product list
 export const ProductListWrapper = styled.div`
@@ -123,4 +121,10 @@ export const Reviews = styled.div`
   font-weight: 500;
   // margin-top: 2px;
   // padding-top: 12px;
+`;
+
+export const IconWrapper = styled.div`
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
 `;

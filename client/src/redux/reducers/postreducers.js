@@ -7,6 +7,7 @@ import {
   ClearSearchData,
   WishListData,
   CartData,
+  Removing_Product_Wishlist
 } from "../actions/constactions";
 
 const initialState = {
@@ -100,6 +101,13 @@ const ProductReducer = (state = initialState, action) => {
       return {
         ...state,
         wishListProduct: action.payload,
+      };
+
+    case Removing_Product_Wishlist:
+      console.log('called in post reducer')
+      return {
+        ...state,
+        wishListProduct: state.wishListProduct.filter(item => item._id != action.payload)
       };
 
     case CartData:

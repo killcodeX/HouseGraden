@@ -5,6 +5,7 @@ import {
   VERIFY_LOCAL_STORAGE,
   LIKE_UNLIKE_PRODUCT,
   ADDING_REMOVING_PRODUCT,
+  REMOVING_PRODUCT_WISHLIST
 } from "../actions/constactions";
 
 import { saveState, loadState } from "../../helpers/localStrorage";

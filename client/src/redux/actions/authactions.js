@@ -4,7 +4,7 @@ import {
   LOGOUT_SUCCESS,
   VERIFY_LOCAL_STORAGE,
   LIKE_UNLIKE_PRODUCT,
-  ADDING_REMOVING_PRODUCT
+  ADDING_REMOVING_PRODUCT,
 } from "./constactions";
 
 import {
@@ -13,7 +13,7 @@ import {
   likeProduct,
   unLikeProduct,
   addProducttoCartApi,
-  removeProducttocartApi
+  removeProducttocartApi,
 } from "../../api/userApi";
 
 export const receiveLogin = (user, history) => async (dispatch) => {
@@ -81,7 +81,10 @@ export const receiveProductUnlike = (id) => async (dispatch) => {
 };
 
 export const receiveProductToCart = (id, quantity) => async (dispatch) => {
-  const result = await addProducttoCartApi({ productId: id, quantity: quantity });
+  const result = await addProducttoCartApi({
+    productId: id,
+    quantity: quantity,
+  });
   try {
     dispatch({
       type: ADDING_REMOVING_PRODUCT,
@@ -93,7 +96,10 @@ export const receiveProductToCart = (id, quantity) => async (dispatch) => {
 };
 
 export const receiveProductOutCart = (id, quantity) => async (dispatch) => {
-  const result = await removeProducttocartApi({ productId: id, quantity: quantity });
+  const result = await removeProducttocartApi({
+    productId: id,
+    quantity: quantity,
+  });
   try {
     dispatch({
       type: ADDING_REMOVING_PRODUCT,

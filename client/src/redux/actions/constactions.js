@@ -16,3 +16,4 @@ export const SearchData = "SEARCH_DATA";
 export const ClearSearchData = "CLEAR_SEARCH_DATA"; 
 export const WishListData = "WISHLIST_DATA";
 export const CartData = "CART_DATA";
+export const Removing_Product_Wishlist = "REMOVING_PRODUCT_WISHLIST";

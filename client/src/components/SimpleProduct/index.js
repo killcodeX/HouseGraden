@@ -18,8 +18,8 @@ import {
   receiveProductLike,
   receiveProductUnlike,
 } from "../../redux/actions/authactions";
+import { RemovingProduct } from "../../redux/actions/postactions";
 import { useDispatch, useSelector } from "react-redux";
-
 
 // Create our number formatter.
 var formatter = new Intl.NumberFormat("en-US", {
@@ -34,11 +34,11 @@ export default function SimpleProduct({ item }) {
   const handleLikeUnlike = (id) => {
     if (user.wishlist.includes(id)) {
       dispatch(receiveProductUnlike(id));
+      dispatch(RemovingProduct(id));
     } else {
       dispatch(receiveProductLike(id));
     }
   };
-
 
   return (
     <ProductCardWrapper>
