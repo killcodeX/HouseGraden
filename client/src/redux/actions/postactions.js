@@ -6,7 +6,7 @@ import {
   SearchData,
   ClearSearchData,
   WishListData,
-  CartData
+  CartData,
 } from "./constactions";
 
 import {
@@ -14,7 +14,7 @@ import {
   getSingleProductApi,
   getFilterProductApi,
   getWishListProductApi,
-  getCartProductApi
+  getCartProductApi,
 } from "../../api/postApi";
 
 // actions
@@ -74,6 +74,7 @@ export const getCartData = () => async (dispatch) => {
   const result = await getCartProductApi();
   dispatch({
     type: CartData,
-    payload: result,
+    products: result.products,
+    pricing: result.pricing,
   });
 };

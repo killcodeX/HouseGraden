@@ -18,6 +18,7 @@ const initialState = {
   searchProduct: [],
   wishListProduct: [],
   cartProduct: [],
+  cartPricing: {},
 };
 
 // Reducers
@@ -104,7 +105,8 @@ const ProductReducer = (state = initialState, action) => {
     case CartData:
       return {
         ...state,
-        cartProduct: action.payload,
+        cartProduct: action.products,
+        cartPricing: action.pricing,
       };
 
     default:

@@ -24,8 +24,8 @@ const { Step } = Steps;
 export default function Cart() {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth.isAuthenticated);
-  const cartProduct = useSelector(state => state.products.cartProduct)
-  const [currentStep, setCurrentStep] = useState(1);
+  const cartProduct = useSelector((state) => state.products.cartProduct);
+  const [currentStep, setCurrentStep] = useState(auth ? 2 : 1);
   let arr = [1];
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function Cart() {
             <SectionSubTitle>Orders Summary</SectionSubTitle>
             <Divider />
             {cartProduct.map((item) => {
-              return <ProductList key={item._id} item={item}/>;
+              return <ProductList key={item._id} item={item} />;
             })}
             <Divider />
             <SectionSubTitle>Payment Summary</SectionSubTitle>
@@ -59,7 +59,7 @@ export default function Cart() {
             <Steps
               direction="vertical"
               current={currentStep}
-              onChange={stepChange}
+              //onChange={stepChange}
             >
               <Step
                 title="Login"

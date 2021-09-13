@@ -1,6 +1,7 @@
 import ProductMessage from "../models/productModel.js";
 import UserMessage from "../models/userModel.js";
 import mongoose from "mongoose";
+import { calDiscount, findTax, findAmount } from "../helpers/helpers.js";
 
 // for getting all product
 export const getAllProduct = async (req, res) => {
@@ -47,13 +48,30 @@ export const getCartProduct = async (req, res) => {
       let data = await ProductMessage.findById(user.wishlist[i]);
       let cart = {
         title: data.title,
+        image: data.image,
         category: data.category,
         price: data.price,
         quantity: user.cart[i].quantity,
+        totalPrice: data.price * user.cart[i].quantity,
       };
-      products.push(cart)
+      products.push(cart);
     }
-    res.status(200).json(products);
+    let AllItemPrice = products.reduce((previousValue, currentValue) => previousValue + currentValue.totalPrice,0);
+    let discount = Math.floor(Math.random() * (10, 60) + 1);
+    let discountPrice = calDiscount(AllItemPrice, discount);
+    let totalTax = findTax(AllItemPrice);
+    let finalAmount = findAmount(AllItemPrice, discountPrice, totalTax)
+    let result = {
+      products: products,
+      pricing: {
+        totalPrice: AllItemPrice,
+        discount: discount,
+        discountPrice: discountPrice,
+        totalTax: totalTax,
+        finalAmount: finalAmount
+      },
+    };
+    res.status(200).json(result);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
