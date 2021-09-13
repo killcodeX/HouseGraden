@@ -2,6 +2,9 @@ import React from "react";
 import { Form, Input } from "antd";
 import { useFormik } from "formik";
 import { Link, useHistory } from "react-router-dom";
+import { RegistrationSchema } from "../../helpers/schema";
+import { receiveSignUp } from "../../redux/actions/authactions";
+import { useDispatch } from "react-redux";
 import {
   Wrapper,
   BannerWrapper,
@@ -16,8 +19,6 @@ import {
   FormLabel,
   SubmitButton,
 } from "./style";
-import { receiveSignUp } from "../../redux/actions/authactions";
-import { useDispatch } from "react-redux";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ export default function Register() {
       password: "",
       mobile: "",
     },
+    validationSchema: RegistrationSchema,
     onSubmit: (values) => {
       dispatch(receiveSignUp(values, history))
     },

@@ -33,7 +33,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/product/:id" component={SingleProduct} />
-        <Route exact path="/my-cart" component={Cart} />
+        <ProtectedRoutes exact auth={auth} path="/my-cart" component={Cart} />
         <ProtectedRoutes
           exact
           auth={auth}
