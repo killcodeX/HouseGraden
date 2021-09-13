@@ -40,8 +40,8 @@ export default function Address({ amount, setCurrentStep }) {
         dispatch(getorderDetails(data));
         setLoading(false);
         message.success('Address Added !!');
+        setCurrentStep(2);
       }, 2000);
-      setCurrentStep(2);
     },
   });
   return (
@@ -81,7 +81,7 @@ export default function Address({ amount, setCurrentStep }) {
             <FormLabel>House No</FormLabel>
             <Form.Item
               name="houseno"
-              rules={[{ required: true, message: "Please input first name!" }]}
+              rules={[{ required: true, message: "Please input House No!" }]}
             >
               <Input
                 type="text"
@@ -95,7 +95,7 @@ export default function Address({ amount, setCurrentStep }) {
             <FormLabel>Zip Code</FormLabel>
             <Form.Item
               name="pincode"
-              rules={[{ required: true, message: "Please input last name!" }]}
+              rules={[{ required: true, message: "Please input Zip code!" }]}
             >
               <Input
                 type="text"
@@ -109,7 +109,7 @@ export default function Address({ amount, setCurrentStep }) {
         <FormLabel>Street</FormLabel>
         <Form.Item
           name="street"
-          rules={[{ required: true, message: "Please input first name!" }]}
+          rules={[{ required: true, message: "Please input street name!" }]}
         >
           <Input
             type="text"
@@ -123,7 +123,7 @@ export default function Address({ amount, setCurrentStep }) {
             <FormLabel>City</FormLabel>
             <Form.Item
               name="city"
-              rules={[{ required: true, message: "Please input first name!" }]}
+              rules={[{ required: true, message: "Please input city name!" }]}
             >
               <Input
                 type="text"
@@ -137,7 +137,7 @@ export default function Address({ amount, setCurrentStep }) {
             <FormLabel>State</FormLabel>
             <Form.Item
               name="state"
-              rules={[{ required: true, message: "Please input last name!" }]}
+              rules={[{ required: true, message: "Please input State name!" }]}
             >
               <Input
                 type="text"
