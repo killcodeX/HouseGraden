@@ -2,7 +2,6 @@ import UserMessage from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-
 // for signup
 export const createUser = async (req, res) => {
   const { fname, lname, email, password, mobile } = req.body;
@@ -94,14 +93,13 @@ export const getunlikeProduct = async (req, res) => {
   }
 };
 
-
 export const getProductInCart = async (req, res) => {
   const { productId, quantity } = req.body;
   try {
     const result = await UserMessage.findByIdAndUpdate(
       req.userId,
       {
-        $push: { cart: {productId :productId, quantity: quantity }},
+        $push: { cart: { productId: productId, quantity: quantity } },
       },
       { new: true }
     );
@@ -112,12 +110,13 @@ export const getProductInCart = async (req, res) => {
 };
 
 export const getProductOutCart = async (req, res) => {
-  const { productId, quantity } = req.body;
+  const { cartId } = req.body;
+  console.log(cartId)
   try {
     const result = await UserMessage.findByIdAndUpdate(
       req.userId,
       {
-        $pull: { cart: {productId :productId, quantity: quantity }},
+        $pull: { cart: {_id: cartId }},
       },
       { new: true }
     );

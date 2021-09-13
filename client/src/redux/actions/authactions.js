@@ -95,11 +95,8 @@ export const receiveProductToCart = (id, quantity) => async (dispatch) => {
   }
 };
 
-export const receiveProductOutCart = (id, quantity) => async (dispatch) => {
-  const result = await removeProducttocartApi({
-    productId: id,
-    quantity: quantity,
-  });
+export const receiveProductOutCart = (id) => async (dispatch) => {
+  const result = await removeProducttocartApi({ cartId: id });
   try {
     dispatch({
       type: ADDING_REMOVING_PRODUCT,

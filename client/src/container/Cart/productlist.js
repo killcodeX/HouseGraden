@@ -12,6 +12,7 @@ import {
 } from "./style";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useDispatch } from "react-redux";
+import { receiveProductOutCart } from "../../redux/actions/authactions";
 
 // Create our number formatter.
 var formatter = new Intl.NumberFormat("en-US", {
@@ -22,8 +23,8 @@ var formatter = new Intl.NumberFormat("en-US", {
 export default function Productlist({ item }) {
   const dispatch = useDispatch()
 
-  const handleDelete = () => {
-    dispatch()
+  const handleDelete = (id) => {
+    dispatch(receiveProductOutCart(id))
   }
 
 
@@ -41,7 +42,7 @@ export default function Productlist({ item }) {
           </FlexSection>
           <FlexSection>
             <PriceWrapper>{formatter.format(item.price)}</PriceWrapper>
-            <IconWrapper onClick={() => handleDelete(item._id)}>
+            <IconWrapper onClick={() => handleDelete(item.cartId)}>
               <AiOutlineDelete />
             </IconWrapper>
           </FlexSection>

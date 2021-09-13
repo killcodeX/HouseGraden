@@ -44,9 +44,14 @@ export const getCartProduct = async (req, res) => {
   let products = [];
   try {
     let user = await UserMessage.findById(req.userId);
+    if(user.cart.length == 0){
+      return res.status(200).json({products:[], pricing:{}});
+    }
     for (let i = 0; i < user.cart.length; i++) {
-      let data = await ProductMessage.findById(user.wishlist[i]);
+      let data = await ProductMessage.findById(user.cart[i].productId);
       let cart = {
+        cartId: user.cart[i]._id,
+        productId: data._id,
         title: data.title,
         image: data.image,
         category: data.category,

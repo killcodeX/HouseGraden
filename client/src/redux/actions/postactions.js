@@ -16,6 +16,7 @@ import {
   getFilterProductApi,
   getWishListProductApi,
   getCartProductApi,
+  removeProductCartApi
 } from "../../api/postApi";
 
 // actions
@@ -86,3 +87,12 @@ export const getCartData = () => async (dispatch) => {
     pricing: result.pricing,
   });
 };
+
+// export const removeCartData = (id) => async (dispatch) => {
+//   const result = await getCartProductApi(id);
+//   dispatch({
+//     type: CartData,
+//     products: result.products,
+//     pricing: result.pricing,
+//   });
+// };

@@ -15,6 +15,7 @@ import {
   OrderSummaryCol,
   SectionTitle,
   SectionSubTitle,
+  NoDataBanner
 } from "./style";
 import { getCartData } from "../../redux/actions/postactions";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,8 +26,8 @@ export default function Cart() {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth.isAuthenticated);
   const cartProduct = useSelector((state) => state.products.cartProduct);
-  const [currentStep, setCurrentStep] = useState(auth ? 2 : 1);
-  let arr = [1];
+  const amount = useSelector((state) => state.products.cartPricing.finalAmount);
+  const [currentStep, setCurrentStep] = useState(2);
 
   useEffect(() => {
     dispatch(getCartData());
@@ -35,6 +36,26 @@ export default function Cart() {
   const stepChange = (current) => {
     setCurrentStep(current);
   };
+
+  if (cartProduct.length == 0) {
+    return (
+      <SectionWrapper>
+        <div className="container">
+          <SectionTitle>My Cart</SectionTitle>
+          <div className="row">
+            <Divider />
+            <NoDataBanner>
+              <span>No Product in Cart</span>
+              <img
+                src={process.env.PUBLIC_URL + "/assets/nodata2.png"}
+                alt="nodata"
+              />
+            </NoDataBanner>
+          </div>
+        </div>
+      </SectionWrapper>
+    );
+  }
 
   return (
     <SectionWrapper>
@@ -74,7 +95,7 @@ export default function Cart() {
               <Step
                 title="Payment"
                 icon={<AiOutlineAudit />}
-                description={<Payment />}
+                description={<Payment amount={amount}/>}
               />
             </Steps>
           </div>
