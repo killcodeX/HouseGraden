@@ -160,7 +160,7 @@ export default function Register() {
             </Form>
             <AuthFooter>
               <AuthPrivacy>
-                By creating your Journal Bit account, you agree to our{" "}
+                By creating your House Garden account, you agree to our{" "}
                 <a href="#">Terms, Data Policy</a> and Cookie Policy.
               </AuthPrivacy>
               <span>
