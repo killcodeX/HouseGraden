@@ -80,22 +80,24 @@ export default function Cart() {
             <Steps
               direction="vertical"
               current={currentStep}
-              //onChange={stepChange}
+              onChange={stepChange}
             >
-              <Step
+              {/* <Step
                 title="Login"
+                status={auth? "wait":"finish"}
                 icon={<AiOutlineUser />}
-                description={<Login />}
-              />
+                description={<Login auth={auth}/>}
+              /> */}
               <Step
                 title="Shipment Address"
                 icon={<AiOutlineShoppingCart />}
-                description={<Address />}
+                description={<Address auth={auth}/>}
               />
               <Step
                 title="Payment"
+                status={auth? "wait":"finish"}
                 icon={<AiOutlineAudit />}
-                description={<Payment amount={amount}/>}
+                description={<Payment amount={amount} auth={auth}/>}
               />
             </Steps>
           </div>

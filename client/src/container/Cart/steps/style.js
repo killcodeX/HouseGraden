@@ -21,7 +21,7 @@ export const BookButton = styled.button`
   min-width: 130px;
   height: 40px;
   color: #ffffff;
-  background-color: #50cd89;
+  background-color: ${props => props.disabled? '#cecece':'#50cd89'};
   border-radius: 0 3px 3px 0;
   border: 0;
   box-shadow: none;

@@ -9,14 +9,14 @@ var formatter = new Intl.NumberFormat("en-US", {
     currency: "INR",
   })
 
-export default function payment({amount}) {
+export default function payment({amount, auth}) {
   return (
     <CartStepWrapper>
       <FlexSection className='mb-4'>
         <PriceDesc>Total Amount:</PriceDesc>
         <PriceValue>{formatter.format(amount)}</PriceValue>
       </FlexSection>
-      <BookButton>Pay Now</BookButton>
+      <BookButton disabled={auth}>Pay Now</BookButton>
     </CartStepWrapper>
   );
 }

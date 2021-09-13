@@ -4,7 +4,7 @@ import { CartStepWrapper, FormLabel, AuthFooter, BookButton } from "./style";
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 
-export default function Login() {
+export default function Login({auth}) {
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -14,6 +14,14 @@ export default function Login() {
       console.log(values);
     },
   });
+
+  if(auth){
+    return (
+      <CartStepWrapper>
+        <span>Login ok !!</span>
+      </CartStepWrapper>
+    )
+  }
 
   return (
     <CartStepWrapper>

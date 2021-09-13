@@ -3,7 +3,7 @@ import { Form, Input } from "antd";
 import { CartStepWrapper, FormLabel, BookButton } from "./style";
 import { useFormik } from "formik";
 
-export default function Address() {
+export default function Address({auth}) {
   const formik = useFormik({
     initialValues: {
       fname: "",
@@ -122,7 +122,7 @@ export default function Address() {
             </Form.Item>
           </div>
         </div>
-        <BookButton type="submit">Save Address</BookButton>
+        <BookButton disabled={auth} type="submit">Save Address</BookButton>
       </Form>
     </CartStepWrapper>
   );
