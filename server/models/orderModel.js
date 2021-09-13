@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const { ObjectId } = mongoose.Schema.Types;
 
 const postSchema = new mongoose.Schema({
-  productId: [{ type: ObjectId, ref: "ProductMessage" }],
+  products: [{ productId: { type: ObjectId, ref: "ProductMessage" }, quantity: Number }],
   address: {
     fname: { type: String, required: true },
     lname: { type: String, required: true },

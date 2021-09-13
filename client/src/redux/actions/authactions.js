@@ -16,6 +16,8 @@ import {
   removeProducttocartApi,
 } from "../../api/userApi";
 
+import { getCartData } from "./postactions";
+
 export const receiveLogin = (user, history) => async (dispatch) => {
   const result = await userLogin(user);
   try {
@@ -96,8 +98,9 @@ export const receiveProductToCart = (id, quantity) => async (dispatch) => {
 };
 
 export const receiveProductOutCart = (id) => async (dispatch) => {
-  const result = await removeProducttocartApi({ cartId: id });
   try {
+    const result = await removeProducttocartApi({ cartId: id });
+    dispatch(getCartData());
     dispatch({
       type: ADDING_REMOVING_PRODUCT,
       payload: result.result,

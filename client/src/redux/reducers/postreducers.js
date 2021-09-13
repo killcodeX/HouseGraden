@@ -7,7 +7,8 @@ import {
   ClearSearchData,
   WishListData,
   CartData,
-  Removing_Product_Wishlist
+  Removing_Product_Wishlist,
+  AddOrderDetails,
 } from "../actions/constactions";
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
   wishListProduct: [],
   cartProduct: [],
   cartPricing: {},
+  orderDetails: {},
 };
 
 // Reducers
@@ -104,10 +106,11 @@ const ProductReducer = (state = initialState, action) => {
       };
 
     case Removing_Product_Wishlist:
-      console.log('called in post reducer')
       return {
         ...state,
-        wishListProduct: state.wishListProduct.filter(item => item._id != action.payload)
+        wishListProduct: state.wishListProduct.filter(
+          (item) => item._id != action.payload
+        ),
       };
 
     case CartData:
@@ -117,6 +120,11 @@ const ProductReducer = (state = initialState, action) => {
         cartPricing: action.pricing,
       };
 
+    case AddOrderDetails:
+      return {
+        ...state,
+        orderDetails: action.payload,
+      };
     default:
       return state;
   }

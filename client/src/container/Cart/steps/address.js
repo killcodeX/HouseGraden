@@ -1,9 +1,17 @@
-import React from "react";
-import { Form, Input } from "antd";
+import React, { useState } from "react";
+import { Form, Input, Spin, message } from "antd";
 import { CartStepWrapper, FormLabel, BookButton } from "./style";
 import { useFormik } from "formik";
+import { AddressSchema } from "../../../helpers/schema";
+import { getorderDetails } from "../../../redux/actions/postactions";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function Address({auth}) {
+export default function Address({ amount, setCurrentStep }) {
+  const dispatch = useDispatch();
+  const cartProduct = useSelector((state) => state.products.cartProduct);
+  const user = useSelector((state) => state.auth.user);
+  const [loading, setLoading] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       fname: "",
@@ -14,8 +22,26 @@ export default function Address({auth}) {
       state: "",
       pincode: "",
     },
+    validationSchema: AddressSchema,
     onSubmit: (values) => {
-      console.log(values);
+      setLoading(true);
+      let products = cartProduct.map((item) => {
+        return { productId: item.productId, quantity: item.quantity };
+      });
+      let data = {
+        address: {
+          ...values,
+          mobile: user.mobile,
+        },
+        products: products,
+        totalAmount: amount,
+      };
+      setTimeout(() => {
+        dispatch(getorderDetails(data));
+        setLoading(false);
+        message.success('Address Added !!');
+      }, 2000);
+      setCurrentStep(2);
     },
   });
   return (
@@ -122,7 +148,11 @@ export default function Address({auth}) {
             </Form.Item>
           </div>
         </div>
-        <BookButton disabled={auth} type="submit">Save Address</BookButton>
+        {loading ? (
+          <Spin />
+        ) : (
+          <BookButton type="submit">Save Address </BookButton>
+        )}
       </Form>
     </CartStepWrapper>
   );

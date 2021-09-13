@@ -27,7 +27,7 @@ export default function Cart() {
   const auth = useSelector((state) => state.auth.isAuthenticated);
   const cartProduct = useSelector((state) => state.products.cartProduct);
   const amount = useSelector((state) => state.products.cartPricing.finalAmount);
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(1);
 
   useEffect(() => {
     dispatch(getCartData());
@@ -80,24 +80,23 @@ export default function Cart() {
             <Steps
               direction="vertical"
               current={currentStep}
-              onChange={stepChange}
+              //onChange={stepChange}
             >
-              {/* <Step
+              <Step
                 title="Login"
-                status={auth? "wait":"finish"}
+                status="finish"
                 icon={<AiOutlineUser />}
-                description={<Login auth={auth}/>}
-              /> */}
+                description={'User Logged in !!'}
+              />
               <Step
                 title="Shipment Address"
                 icon={<AiOutlineShoppingCart />}
-                description={<Address auth={auth}/>}
+                description={<Address amount={amount} setCurrentStep={setCurrentStep}/>}
               />
               <Step
                 title="Payment"
-                status={auth? "wait":"finish"}
                 icon={<AiOutlineAudit />}
-                description={<Payment amount={amount} auth={auth}/>}
+                description={<Payment amount={amount} currentStep={currentStep}/>}
               />
             </Steps>
           </div>

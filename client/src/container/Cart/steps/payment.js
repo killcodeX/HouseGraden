@@ -2,21 +2,22 @@ import React from "react";
 import { CartStepWrapper, BookButton } from "./style";
 import { FlexSection, PriceDesc, PriceValue } from "../style";
 
-
 // Create our number formatter.
 var formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "INR",
-  })
+  style: "currency",
+  currency: "INR",
+});
 
-export default function payment({amount, auth}) {
+export default function payment({ amount, currentStep }) {
   return (
     <CartStepWrapper>
-      <FlexSection className='mb-4'>
+      <FlexSection className="mb-4">
         <PriceDesc>Total Amount:</PriceDesc>
         <PriceValue>{formatter.format(amount)}</PriceValue>
       </FlexSection>
-      <BookButton disabled={auth}>Pay Now</BookButton>
+      <BookButton disabled={currentStep == 2 ? false : true}>
+        Pay Now
+      </BookButton>
     </CartStepWrapper>
   );
 }

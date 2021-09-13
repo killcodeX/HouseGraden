@@ -7,7 +7,8 @@ import {
   ClearSearchData,
   WishListData,
   CartData,
-  Removing_Product_Wishlist
+  Removing_Product_Wishlist,
+  AddOrderDetails
 } from "./constactions";
 
 import {
@@ -88,11 +89,9 @@ export const getCartData = () => async (dispatch) => {
   });
 };
 
-// export const removeCartData = (id) => async (dispatch) => {
-//   const result = await getCartProductApi(id);
-//   dispatch({
-//     type: CartData,
-//     products: result.products,
-//     pricing: result.pricing,
-//   });
-// };
+export const getorderDetails = (body) => {
+  return {
+    type: AddOrderDetails,
+    payload: body
+  }
+}
