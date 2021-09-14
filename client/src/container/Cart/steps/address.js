@@ -26,7 +26,7 @@ export default function Address({ amount, setCurrentStep }) {
     onSubmit: (values) => {
       setLoading(true);
       let products = cartProduct.map((item) => {
-        return { productId: item.productId, quantity: item.quantity };
+        return { productId: item.productId, quantity: item.quantity, cartId: item.cartId };
       });
       let data = {
         address: {

@@ -64,7 +64,6 @@ export const handlePayment = async (req, res) => {
 // for booking sucessful
 export const orderSuccess = async (req, res) => {
   const {products} = req.body
-  console.log(products)
   try {
     const data = {
       ...req.body,
@@ -77,7 +76,7 @@ export const orderSuccess = async (req, res) => {
       await UserMessage.findByIdAndUpdate(
         req.userId,
         {
-          $pull: { cart: {_id: products[i].productId }},
+          $pull: { cart: {_id: products[i].cartId }},
         },
         { new: true }
       );

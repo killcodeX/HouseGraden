@@ -23,6 +23,7 @@ function loadScript(src) {
 }
 
 export const displayRazorPay = async (amount, productDetails, userId, history) => {
+  console.log('user id  -->',userId)
   const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
   if (!res) {
     alert("Razorpay SDK failed to load. Are you online?");
@@ -45,9 +46,10 @@ export const displayRazorPay = async (amount, productDetails, userId, history) =
       console.log("payment successfull", response);
       const data = {
         ...productDetails,
+        
         paymentId: response.razorpay_payment_id,
         orderId: response.razorpay_order_id,
-        status: "booked",
+        status: "confirmed",
       };
       await ApiFunc.post("/housegarden/order-successfull", data);
       openNotificationWithIcon(
