@@ -14,6 +14,8 @@ var formatter = new Intl.NumberFormat("en-US", {
 export default function Payment({ amount, currentStep }) {
   const history = useHistory();
   const productDetails = useSelector((state) => state.products.orderDetails);
+  const userId = useSelector((state) => state.auth.user._id);
+
   return (
     <CartStepWrapper>
       <FlexSection className="mb-4">
@@ -22,7 +24,7 @@ export default function Payment({ amount, currentStep }) {
       </FlexSection>
       <BookButton
         disabled={currentStep == 2 ? false : true}
-        onClick={() => displayRazorPay(amount, productDetails, history)}
+        onClick={() => displayRazorPay(amount, productDetails, userId, history)}
       >
         Pay Now
       </BookButton>

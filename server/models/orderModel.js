@@ -16,6 +16,7 @@ const postSchema = new mongoose.Schema({
   },
   totalAmount: { type: String, required: true },
   orderId: { type: String, required: true },
+  paymentId: { type: String, required: true },
   userId: { type: ObjectId, ref: "UserMessage" },
   status: { type: String, required: true },
   createdAt: {

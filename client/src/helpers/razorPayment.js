@@ -22,7 +22,7 @@ function loadScript(src) {
   });
 }
 
-export const displayRazorPay = async (amount, productDetails, history) => {
+export const displayRazorPay = async (amount, productDetails, userId, history) => {
   const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
   if (!res) {
     alert("Razorpay SDK failed to load. Are you online?");
@@ -52,10 +52,10 @@ export const displayRazorPay = async (amount, productDetails, history) => {
       await ApiFunc.post("/housegarden/order-successfull", data);
       openNotificationWithIcon(
         "success",
-        "Booking Confirmed",
-        "Successfully booked rooms"
+        "order Confirmed",
+        ""
       );
-      //history.push(`/profile/${userId}`);
+      history.push(`/my-cart/${userId}`);
     },
     prefill: {
       name: data.data.name,

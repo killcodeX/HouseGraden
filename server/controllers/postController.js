@@ -1,5 +1,6 @@
 import ProductMessage from "../models/productModel.js";
 import UserMessage from "../models/userModel.js";
+import OrderMessage from "../models/orderModel.js";
 import shortid from "shortid";
 import crypto from "crypto";
 import { razorpay } from "../index.js";
@@ -62,16 +63,15 @@ export const handlePayment = async (req, res) => {
 
 // for booking sucessful
 export const orderSuccess = async (req, res) => {
-  console.log(req.body)
-  // try {
-  //   const data = {
-  //     ...req.body,
-  //     userId: req.userId,
-  //   };
-  //   const result = await BookingMessage.create(data);
-  //   res.status(200).json(result);
-  // } catch (error) {
-  //   console.log(error);
-  //   res.status(404).json({ message: error });
-  // }
+  try {
+    const data = {
+      ...req.body,
+      userId: req.userId,
+    };
+    const result = await OrderMessage.create(data);
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({ message: error });
+  }
 };
