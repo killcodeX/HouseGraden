@@ -9,6 +9,7 @@ import {
   CartData,
   Removing_Product_Wishlist,
   AddOrderDetails,
+  OrderData,
 } from "../actions/constactions";
 
 const initialState = {
@@ -22,6 +23,7 @@ const initialState = {
   cartProduct: [],
   cartPricing: {},
   orderDetails: {},
+  orderProducts: [],
 };
 
 // Reducers
@@ -125,6 +127,13 @@ const ProductReducer = (state = initialState, action) => {
         ...state,
         orderDetails: action.payload,
       };
+
+    case OrderData:
+      return {
+        ...state,
+        orderProducts: action.payload,
+      };
+
     default:
       return state;
   }

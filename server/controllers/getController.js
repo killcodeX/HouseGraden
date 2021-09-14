@@ -1,5 +1,6 @@
 import ProductMessage from "../models/productModel.js";
 import UserMessage from "../models/userModel.js";
+import OrderMessage from "../models/orderModel.js";
 import mongoose from "mongoose";
 import { calDiscount, findTax, findAmount } from "../helpers/helpers.js";
 
@@ -44,8 +45,8 @@ export const getCartProduct = async (req, res) => {
   let products = [];
   try {
     let user = await UserMessage.findById(req.userId);
-    if(user.cart.length == 0){
-      return res.status(200).json({products:[], pricing:{}});
+    if (user.cart.length == 0) {
+      return res.status(200).json({ products: [], pricing: {} });
     }
     for (let i = 0; i < user.cart.length; i++) {
       let data = await ProductMessage.findById(user.cart[i].productId);
@@ -61,11 +62,14 @@ export const getCartProduct = async (req, res) => {
       };
       products.push(cart);
     }
-    let AllItemPrice = products.reduce((previousValue, currentValue) => previousValue + currentValue.totalPrice,0);
+    let AllItemPrice = products.reduce(
+      (previousValue, currentValue) => previousValue + currentValue.totalPrice,
+      0
+    );
     let discount = Math.floor(Math.random() * (10, 60) + 1);
     let discountPrice = calDiscount(AllItemPrice, discount);
     let totalTax = findTax(AllItemPrice);
-    let finalAmount = findAmount(AllItemPrice, discountPrice, totalTax)
+    let finalAmount = findAmount(AllItemPrice, discountPrice, totalTax);
     let result = {
       products: products,
       pricing: {
@@ -73,9 +77,33 @@ export const getCartProduct = async (req, res) => {
         discount: discount,
         discountPrice: discountPrice,
         totalTax: totalTax,
-        finalAmount: finalAmount
+        finalAmount: finalAmount,
       },
     };
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export const getOrderProduct = async (req, res) => {
+  try {
+    let result = await OrderMessage.find();
+    for(let i = 0; i < result.length; i++){
+      let newProduct = []
+      for(let j = 0; j < result[i].products.length; j++){
+        let data = await ProductMessage.findById(result[i].products[j].productId)
+        let prodData = {
+          title: data.title,
+          image: data.image,
+          category: data.category,
+          quantity: result[i].products[j].quantity,
+          price: data.price
+        }
+        newProduct.push(prodData)
+      }
+      result[i].products = [...newProduct] //newProduct
+    }
     res.status(200).json(result);
   } catch (error) {
     res.status(404).json({ message: error.message });

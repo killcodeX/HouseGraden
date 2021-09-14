@@ -99,3 +99,19 @@ export const getCartProductApi = async () => {
     }
   }
 };
+
+
+export const getOrderProductApi = async () => {
+  try {
+    const { data } = await ApiFunc.get(`/housegarden/order-products`);
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Fetching Order Product Failed",
+        error.response.data.message
+      );
+    }
+  }
+};

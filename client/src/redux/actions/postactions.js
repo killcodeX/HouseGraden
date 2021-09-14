@@ -8,7 +8,8 @@ import {
   WishListData,
   CartData,
   Removing_Product_Wishlist,
-  AddOrderDetails
+  AddOrderDetails,
+  OrderData
 } from "./constactions";
 
 import {
@@ -17,7 +18,8 @@ import {
   getFilterProductApi,
   getWishListProductApi,
   getCartProductApi,
-  removeProductCartApi
+  removeProductCartApi,
+  getOrderProductApi
 } from "../../api/postApi";
 
 // actions
@@ -95,3 +97,11 @@ export const getorderDetails = (body) => {
     payload: body
   }
 }
+
+export const getorderData = () => async (dispatch) => {
+  const result = await getOrderProductApi();
+  dispatch({
+    type: OrderData,
+    payload: result,
+  });
+};
