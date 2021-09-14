@@ -57,7 +57,8 @@ export const displayRazorPay = async (amount, productDetails, userId, history) =
         "order Confirmed",
         ""
       );
-      history.push(`/my-cart/${userId}`);
+      console.log("just before ")
+      history.push(`/my-orders/${userId}`);
     },
     prefill: {
       name: data.data.name,
