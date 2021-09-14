@@ -14,10 +14,10 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 // for setting up razorpay
-// export const razorpay = new Razorpay({
-//   key_id: process.env.RAZOR_KEY_ID,
-//   key_secret: process.env.RAZOR_KEY_SECRET,
-// });
+export const razorpay = new Razorpay({
+  key_id: process.env.RAZOR_KEY_ID,
+  key_secret: process.env.RAZOR_KEY_SECRET,
+});
 
 // sholud be called after initializing cors to avoid cors origin issue
 app.use("/housegarden", gardenRoutes);

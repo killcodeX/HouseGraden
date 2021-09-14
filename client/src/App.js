@@ -37,13 +37,13 @@ function App() {
         <ProtectedRoutes
           exact
           auth={auth}
-          path="/my-orders"
+          path="/my-orders/:id"
           component={Orders}
         />
         <ProtectedRoutes
           exact
           auth={auth}
-          path="/my-wishlist"
+          path="/my-wishlist/:id"
           component={WishList}
         />
         <Route exact path="/login" component={Login} />

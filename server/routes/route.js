@@ -14,7 +14,7 @@ import {
   getWishlistProduct,
   getCartProduct
 } from "../controllers/getController.js";
-import { filterProduct } from "../controllers/postController.js";
+import { filterProduct, handlePayment, orderSuccess } from "../controllers/postController.js";
 import { AuthenticateToken } from "../middlewares/tokenValidate.js";
 import { addAddressToOrder } from "../controllers/putController.js"
 
@@ -35,6 +35,10 @@ router.post("/create-product", createProduct);
 router.post("/filter-product", filterProduct);
 router.get("/wishlist-products", AuthenticateToken, getWishlistProduct);
 router.get("/cart-products", AuthenticateToken, getCartProduct);
-router.put("/add-address", AuthenticateToken, addAddressToOrder)
+//router.put("/add-address", AuthenticateToken, addAddressToOrder)
+
+// for payment
+router.post("/payment", AuthenticateToken, handlePayment);
+router.post("/order-successfull", AuthenticateToken, orderSuccess);
 
 export default router;

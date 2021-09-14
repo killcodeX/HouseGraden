@@ -67,7 +67,7 @@ export default function Cart() {
             <SectionSubTitle>Orders Summary</SectionSubTitle>
             <Divider />
             {cartProduct.map((item) => {
-              return <ProductList key={item._id} item={item} />;
+              return <ProductList key={item.cartId} item={item} />;
             })}
             <Divider />
             <SectionSubTitle>Payment Summary</SectionSubTitle>

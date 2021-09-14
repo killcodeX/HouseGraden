@@ -1,4 +1,8 @@
-import ProductMessage from "../models/productModel.js"
+import ProductMessage from "../models/productModel.js";
+import UserMessage from "../models/userModel.js";
+import shortid from "shortid";
+import crypto from "crypto";
+import { razorpay } from "../index.js";
 
 // for filter Product
 export const filterProduct = async (req, res) => {
@@ -27,3 +31,47 @@ export const filterProduct = async (req, res) => {
       res.status(404).json({ message: error.message });
     }
   };
+
+
+  // process order
+export const handlePayment = async (req, res) => {
+  try {
+    const existingUser = await UserMessage.findById(req.userId);
+    const payment_capture = 1;
+    const currency = "INR";
+    const options = {
+      amount: req.body.totalAmount * 100,
+      currency,
+      receipt: shortid.generate(),
+      payment_capture,
+    };
+    const response = await razorpay.orders.create(options);
+    let data = {
+      ...response,
+      name: existingUser.fname + " " + existingUser.lname,
+      email: existingUser.email,
+      mobile: existingUser.mobile,
+    };
+    res.status(200).json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({ message: error });
+  }
+};
+
+
+// for booking sucessful
+export const orderSuccess = async (req, res) => {
+  console.log(req.body)
+  // try {
+  //   const data = {
+  //     ...req.body,
+  //     userId: req.userId,
+  //   };
+  //   const result = await BookingMessage.create(data);
+  //   res.status(200).json(result);
+  // } catch (error) {
+  //   console.log(error);
+  //   res.status(404).json({ message: error });
+  // }
+};
