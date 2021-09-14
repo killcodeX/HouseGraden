@@ -48,13 +48,13 @@ export default function Header() {
       {auth ? (
         <>
           <Menu.Item key="1" icon={<BsBag />}>
-            <Link to="/my-orders">My Orders</Link>
+            <Link to={`/my-orders/${user._id}`}>My Orders</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<BsBag />}>
-            <Link to="/my-cart">My Cart</Link>
+            <Link to={`/my-cart/${user._id}`}>My Cart</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<BsHeart />}>
-            <Link to="/my-wishlist">My Wishlist</Link>
+            <Link to={`/my-wishlist${user._id}`}>My Wishlist</Link>
           </Menu.Item>
           <Menu.Divider />
           <Menu.Item key="4" icon={<AiOutlineArrowRight />} danger>
@@ -107,14 +107,14 @@ export default function Header() {
               <>
                 <Badge dot offset={[-2, 5]}>
                   <IconWrapper>
-                    <Link style={{ color: "inherit" }} to={auth? "/my-cart": "/login"}>
+                    <Link style={{ color: "inherit" }} to={auth? `/my-cart/${user._id}`: "/login"}>
                       <BsBag />
                     </Link>
                   </IconWrapper>
                 </Badge>
                 <Badge dot offset={[-1, 2]}>
                   <IconWrapper>
-                    <Link style={{ color: "inherit" }} to={auth? "/my-wishlist" : "/login"}>
+                    <Link style={{ color: "inherit" }} to={auth? `/my-wishlist/${user._id}` : "/login"}>
                       <BsHeart />
                     </Link>
                   </IconWrapper>
