@@ -39,7 +39,7 @@ Final Backend Code -> [https://github.com/killcodeX/HouseGarden-back](https://gi
   <img src="https://github.com/killcodeX/HouseGraden/blob/main/screenshots/2.png" />
 </p>
 <p align="center">
-  Login Page
+  Register Page
 </p>
 <br>
 <br>
