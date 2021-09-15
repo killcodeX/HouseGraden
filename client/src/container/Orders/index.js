@@ -9,15 +9,14 @@ import {
   SideMenuWrapper,
 } from "./style";
 import OrderProduct from "../../components/OrderProducts";
-import { getorderData } from "../../redux/actions/postactions";
 import { useDispatch, useSelector } from "react-redux";
+import { getorderData } from "../../redux/actions/postactions";
+
 
 export default function Orders() {
   const { width } = useWindowSize();
   const dispatch = useDispatch();
   const products = useSelector(state => state.products.orderProducts)
-
-  console.log(products)
 
   useEffect(() => {
     dispatch(getorderData());

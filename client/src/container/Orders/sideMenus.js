@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Divider, Checkbox } from "antd";
 import { AiOutlineDoubleLeft } from "react-icons/ai";
 import useWindowSize from "../../helpers/windowSize";
 import { SideWarpper } from "../../components/SideBar/style";
 import { SideHeader, IconWrapper, SideBarTitle } from "./style";
 import { order } from "../../fakedata";
+import { getorderData } from "../../redux/actions/postactions";
+import { useDispatch } from "react-redux";
 
 export default function OrderSideMenus({sideOpen, setSideOpen}) {
   const [value, setValue] = useState("Recent Orders");
   const { width } = useWindowSize();
+  const dispatch = useDispatch();
 
   function handleChange(checkedValues) {
     setValue(checkedValues.target.value);

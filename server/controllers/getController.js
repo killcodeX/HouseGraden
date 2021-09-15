@@ -89,21 +89,6 @@ export const getCartProduct = async (req, res) => {
 export const getOrderProduct = async (req, res) => {
   try {
     let result = await OrderMessage.find().populate("products.productId", "title image category price");
-    // for(let i = 0; i < result.length; i++){
-    //   let newProduct = []
-    //   for(let j = 0; j < result[i].products.length; j++){
-    //     let data = await ProductMessage.findById(result[i].products[j].productId)
-    //     let prodData = {
-    //       title: data.title,
-    //       image: data.image,
-    //       category: data.category,
-    //       quantity: result[i].products[j].quantity,
-    //       price: data.price
-    //     }
-    //     newProduct.push(prodData)
-    //   }
-    //   result[i] = { ...result[i], products: newProduct}
-    // } 
     res.status(200).json(result);
   } catch (error) {
     res.status(404).json({ message: error.message });
