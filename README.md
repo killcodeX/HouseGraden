@@ -1,5 +1,5 @@
 # House Garden
-The House Garden app is a ecommerce app for plants, where users can browse different types of plants and things related to nursery, filter them according to price or rating or types, view single hotels, and book them.
+The House Garden app is a ecommerce app for plants, where users can browse different types of plants and things related to nursery, filter them according to price or rating or types, view products, add to wishlist or to cart, and finally enter address and pay the amount, you can also check order history too.
 
 ## Project Overview
 
