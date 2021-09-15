@@ -15,21 +15,25 @@ import { useDispatch } from "react-redux";
 
 export default function SideMenus({ sideOpen, setSideOpen }) {
   const [value, setValue] = useState("All Data");
+  const [ratingVal, setRatingVal] = useState(0)
   const { width } = useWindowSize();
   const dispatch = useDispatch()
 
   function handleChange(checkedValues) {
     setValue(checkedValues.target.value);
     dispatch(getFilterData({"category": checkedValues.target.value}));
+    setRatingVal(0)
   }
 
   function handleRange(val) {
     setValue("All Data")
+    setRatingVal(0)
     dispatch(getFilterData({"price": val}))
   }
 
   function handleRating(val) {
     setValue("All Data")
+    setRatingVal(val)
     dispatch(getFilterData({"rating": val}))
   }
 
@@ -71,7 +75,7 @@ export default function SideMenus({ sideOpen, setSideOpen }) {
       />
       <Divider style={{ margin: "14px 0" }} />
       <SideBarHeading className="mb-2">Rating</SideBarHeading>
-      <Rate allowHalf onChange={handleRating} />
+      <Rate value={ratingVal} allowHalf onChange={handleRating} />
     </SideWarpper>
   );
 }
