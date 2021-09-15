@@ -115,3 +115,19 @@ export const getOrderProductApi = async () => {
     }
   }
 };
+
+export const getCancelOrderApi = async (id) => {
+  try {
+    const { data } = await ApiFunc.put(`/housegarden/cancel-order/${id}`);
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Fetching Order Product Failed",
+        error.response.data.message
+      );
+    }
+  }
+};
+

@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import { Dropdown, Menu, Divider, Collapse, Button } from "antd";
 import { AiOutlineClose, AiOutlineSetting } from "react-icons/ai";
 import {
@@ -13,6 +13,8 @@ import {
   BookButton,
   OrderProductsWrapper,
 } from "./style";
+import { getCancelOrder } from "../../redux/actions/postactions";
+import { useDispatch } from "react-redux";
 
 const { Panel } = Collapse;
 
@@ -23,13 +25,14 @@ var formatter = new Intl.NumberFormat("en-US", {
 });
 
 export default function OrderProduct({ item }) {
+  const dispatch = useDispatch()
   let date = new Date(item.createdAt);
   const [bookId, setBookId] = useState("");
   let obj = { confirmed: "#50cd89", cancelled: "#FF5052", received: "#6571FF" };
 
   const handleCancel = ({ key }) => {
     if (key == 1) {
-      //dispatch(getBookingCancel(bookId));
+      dispatch(getCancelOrder(bookId));
     }
   };
 
@@ -134,7 +137,7 @@ export default function OrderProduct({ item }) {
         </Panel>
       </Collapse>
       <FlexSection className="mt-2">
-        {item.status == "confirmed" ? (
+        {item.status !== "confirmed" ? (
           <Dropdown
             overlay={menu}
             onVisibleChange={() => setBookId(item._id)}
@@ -146,9 +149,7 @@ export default function OrderProduct({ item }) {
             </Button>
           </Dropdown>
         ) : null}
-        <BookButton status={obj[item.status]}>
-          {item.status}
-        </BookButton>
+        <BookButton status={obj[item.status]}>{item.status}</BookButton>
       </FlexSection>
     </ProductCardWrapper>
   );

@@ -9,7 +9,8 @@ import {
   CartData,
   Removing_Product_Wishlist,
   AddOrderDetails,
-  OrderData
+  OrderData,
+  CancelOrder
 } from "./constactions";
 
 import {
@@ -19,7 +20,8 @@ import {
   getWishListProductApi,
   getCartProductApi,
   removeProductCartApi,
-  getOrderProductApi
+  getOrderProductApi,
+  getCancelOrderApi
 } from "../../api/postApi";
 
 // actions
@@ -105,3 +107,11 @@ export const getorderData = () => async (dispatch) => {
     payload: result,
   });
 };
+
+export const getCancelOrder = (id) => async (dispatch) => {
+  const result = await getCancelOrderApi(id);
+  dispatch({
+    type: CancelOrder,
+    payload: result
+  })
+}

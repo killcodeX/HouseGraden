@@ -17,7 +17,7 @@ import {
 } from "../controllers/getController.js";
 import { filterProduct, handlePayment, orderSuccess } from "../controllers/postController.js";
 import { AuthenticateToken } from "../middlewares/tokenValidate.js";
-import { addAddressToOrder } from "../controllers/putController.js"
+import { addAddressToOrder, cancelOrder } from "../controllers/putController.js"
 
 const router = express.Router();
 
@@ -37,6 +37,8 @@ router.post("/filter-product", filterProduct);
 router.get("/wishlist-products", AuthenticateToken, getWishlistProduct);
 router.get("/cart-products", AuthenticateToken, getCartProduct);
 router.get("/order-products", AuthenticateToken, getOrderProduct)
+
+router.put("/cancel-order/:id", cancelOrder)
 
 // for payment
 router.post("/payment", AuthenticateToken, handlePayment);

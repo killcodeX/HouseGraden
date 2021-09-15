@@ -19,3 +19,4 @@ export const CartData = "CART_DATA";
 export const Removing_Product_Wishlist = "REMOVING_PRODUCT_WISHLIST";
 export const AddOrderDetails = "ADD_ORDER_DETAILS";
 export const OrderData = "ORDER_DATA";
+export const CancelOrder = "CANCEL_ORDER";
