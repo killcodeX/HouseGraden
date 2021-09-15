@@ -52,7 +52,7 @@ Final Backend Code -> [https://github.com/killcodeX/HouseGarden-back](https://gi
 <br>
 <br>
 <p align="center">
-  <img src="https://github.com/killcodeX/mern-hotelin/blob/main/screenshots/5.png" />
+  <img src="https://github.com/killcodeX/HouseGraden/blob/main/screenshots/4.png" />
 </p>
 <p align="center">
     WishList Product Page
@@ -60,18 +60,24 @@ Final Backend Code -> [https://github.com/killcodeX/HouseGarden-back](https://gi
 <br>
 <br>
 <p align="center">
-  <img src="https://github.com/killcodeX/mern-hotelin/blob/main/screenshots/5.png" />
+  <img src="https://github.com/killcodeX/HouseGraden/blob/main/screenshots/5.png" />
 </p>
 <p align="center">
-  Booking Page with Payment Gateway
+  Cart Product Page
 </p>
 <br>
 <br>
 <p align="center">
-  <img src="https://github.com/killcodeX/mern-hotelin/blob/main/screenshots/6.png" />
+  <img src="https://github.com/killcodeX/HouseGraden/blob/main/screenshots/6.png" />
 </p>
 <p align="center">
-  Booking History Page
+  Address page with Payment Gateway
+</p>
+<p align="center">
+  <img src="https://github.com/killcodeX/HouseGraden/blob/main/screenshots/7.png" />
+</p>
+<p align="center">
+  Order History Page
 </p>
 
 
