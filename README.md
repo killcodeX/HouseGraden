@@ -82,14 +82,12 @@ Final Backend Code -> [https://github.com/killcodeX/HouseGarden-back](https://gi
 
 
 ## Overall Functionlity
-- Main Landing Listing Page with search form, Descriptions, Cities and Few hotels
-- Viewing Hotels by search or selecting cities
-- Filtering Hotels by Price or rating parameter
-- Viewing single hotel with full description and booking hotel
-- Getting Reservation details fot booking hotel
-- User can only booked hotel or see their history if ony they are logged in !!
-- Booking Hotel through Razorpay test mode payment simulation
-- Going to my booking page to see history of your booking, all upcoming, cancelled or completed trips.
+- Main Page with all the product listed, with different ypes of filter like categories, price limit and rating
+- A SearchBar with auto suggestion and sorting feature, also user if logged in can add product to wish list.
+- Single page for product with their details, user can select quantity and add to cart
+- A wishlist page where user can see its favourite products,
+- Cart page with all products displayed, where user can remove product he didnt wish to order and a price summary section, user can add the address and then pay using razorpay payment gateway
+- After ordering, user can check its history and can cancel the current orders.
 
 
 ***Glad to see you here! Show some love by [starring](https://github.com/killcodeX/HouseGraden) this repo.***
