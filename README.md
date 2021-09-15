@@ -1,5 +1,5 @@
 # House Garden
-The Hotel In app is a hotel booking, where users can browse different hotels by city, filter them according to price or rating, view single hotels, and book them.
+The House Garden app is a ecommerce app for plants, where users can browse different types of plants and things related to nursery, filter them according to price or rating or types, view single hotels, and book them.
 
 ## Project Overview
 
