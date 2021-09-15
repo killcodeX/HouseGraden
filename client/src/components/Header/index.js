@@ -54,7 +54,7 @@ export default function Header() {
             <Link to={`/my-cart/${user._id}`}>My Cart</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<BsHeart />}>
-            <Link to={`/my-wishlist${user._id}`}>My Wishlist</Link>
+            <Link to={`/my-wishlist/${user._id}`}>My Wishlist</Link>
           </Menu.Item>
           <Menu.Divider />
           <Menu.Item key="4" icon={<AiOutlineArrowRight />} danger>
@@ -73,7 +73,7 @@ export default function Header() {
     <NavBar>
       <div className="container">
         {sideOpen ? (
-          location.pathname == "/my-orders" ? (
+          location.pathname.includes("/my-orders") ? (
             <OrderSideMenus sideOpen={sideOpen} setSideOpen={setSideOpen} />
           ) : (
             <SideMenus sideOpen={sideOpen} setSideOpen={setSideOpen} />
@@ -82,9 +82,11 @@ export default function Header() {
         <NavItems>
           <LeftNavItems>
             {width <= 480 ? (
-              <IconWrapper onClick={() => setSideOpen(!sideOpen)}>
-                <AiOutlineMenuUnfold />
-              </IconWrapper>
+              location.pathname == "/" || location.pathname.includes("/my-orders") ? (
+                <IconWrapper onClick={() => setSideOpen(!sideOpen)}>
+                  <AiOutlineMenuUnfold />
+                </IconWrapper>
+              ) : null
             ) : null}
             <LogoWrapper>
               <Link
@@ -107,14 +109,20 @@ export default function Header() {
               <>
                 <Badge dot offset={[-2, 5]}>
                   <IconWrapper>
-                    <Link style={{ color: "inherit" }} to={auth? `/my-cart/${user._id}`: "/login"}>
+                    <Link
+                      style={{ color: "inherit" }}
+                      to={auth ? `/my-cart/${user._id}` : "/login"}
+                    >
                       <BsBag />
                     </Link>
                   </IconWrapper>
                 </Badge>
                 <Badge dot offset={[-1, 2]}>
                   <IconWrapper>
-                    <Link style={{ color: "inherit" }} to={auth? `/my-wishlist/${user._id}` : "/login"}>
+                    <Link
+                      style={{ color: "inherit" }}
+                      to={auth ? `/my-wishlist/${user._id}` : "/login"}
+                    >
                       <BsHeart />
                     </Link>
                   </IconWrapper>
