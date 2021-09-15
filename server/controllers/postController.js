@@ -7,34 +7,33 @@ import { razorpay } from "../index.js";
 
 // for filter Product
 export const filterProduct = async (req, res) => {
-    try {
-        if(req.body.category == "All Data"){
-            const result = await ProductMessage.find();
-            return res.status(200).json(result);
-        }else if(req.body.category){
-            const result = await ProductMessage.find(req.body);
-            return res.status(200).json(result);
-        }else if(req.body.rating){
-            const result = await ProductMessage.find(req.body);
-            return res.status(200).json(result);
-        } else if(req.body.price){
-            let [min, max] = req.body.price;
-            const result = await ProductMessage.find();
-            let arr = []
-            for(let i = 0; i < result.length; i++){
-                if(result[i].price >= min &&  result[i].price <= max){
-                    arr.push(result[i])
-                }
-            }
-            return res.status(200).json(arr);
+  try {
+    if (req.body.category == "All Data") {
+      const result = await ProductMessage.find();
+      return res.status(200).json(result);
+    } else if (req.body.category) {
+      const result = await ProductMessage.find(req.body);
+      return res.status(200).json(result);
+    } else if (req.body.rating) {
+      const result = await ProductMessage.find(req.body);
+      return res.status(200).json(result);
+    } else if (req.body.price) {
+      let [min, max] = req.body.price;
+      const result = await ProductMessage.find();
+      let arr = [];
+      for (let i = 0; i < result.length; i++) {
+        if (result[i].price >= min && result[i].price <= max) {
+          arr.push(result[i]);
         }
-    } catch (error) {
-      res.status(404).json({ message: error.message });
+      }
+      return res.status(200).json(arr);
     }
-  };
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
-
-  // process order
+// process order
 export const handlePayment = async (req, res) => {
   try {
     const existingUser = await UserMessage.findById(req.userId);
@@ -60,10 +59,9 @@ export const handlePayment = async (req, res) => {
   }
 };
 
-
 // for booking sucessful
 export const orderSuccess = async (req, res) => {
-  const {products} = req.body
+  const { products } = req.body;
   try {
     const data = {
       ...req.body,
@@ -71,12 +69,12 @@ export const orderSuccess = async (req, res) => {
     };
 
     const result = await OrderMessage.create(data);
-    
-    for(let i = 0; i < products.length; i++){
+
+    for (let i = 0; i < products.length; i++) {
       await UserMessage.findByIdAndUpdate(
         req.userId,
         {
-          $pull: { cart: {_id: products[i].cartId }},
+          $pull: { cart: { _id: products[i].cartId } },
         },
         { new: true }
       );
@@ -85,5 +83,31 @@ export const orderSuccess = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: error });
+  }
+};
+
+export const getOrderProduct = async (req, res) => {
+  const { status } = req.body;
+  try {
+    if (status == "Cancelled Orders") {
+      let result = await OrderMessage.find({ status: "cancelled" }).populate(
+        "products.productId",
+        "title image category price"
+      );
+      return res.status(200).json(result);
+    } else if(status == "Received Orders"){
+      let result = await OrderMessage.find({ status: "received" }).populate(
+        "products.productId",
+        "title image category price"
+      );
+      return res.status(200).json(result);
+    }
+    let result = await OrderMessage.find({ status: "confirmed" }).populate(
+      "products.productId",
+      "title image category price"
+    );
+    return res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
   }
 };

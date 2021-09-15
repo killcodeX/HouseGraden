@@ -100,8 +100,8 @@ export const getorderDetails = (body) => {
   }
 }
 
-export const getorderData = () => async (dispatch) => {
-  const result = await getOrderProductApi();
+export const getorderData = (body) => async (dispatch) => {
+  const result = await getOrderProductApi(body);
   dispatch({
     type: OrderData,
     payload: result,
@@ -110,6 +110,7 @@ export const getorderData = () => async (dispatch) => {
 
 export const getCancelOrder = (id) => async (dispatch) => {
   const result = await getCancelOrderApi(id);
+  getorderData()
   dispatch({
     type: CancelOrder,
     payload: result

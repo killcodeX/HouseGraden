@@ -101,9 +101,9 @@ export const getCartProductApi = async () => {
 };
 
 
-export const getOrderProductApi = async () => {
+export const getOrderProductApi = async (body) => {
   try {
-    const { data } = await ApiFunc.get(`/housegarden/order-products`);
+    const { data } = await ApiFunc.post(`/housegarden/order-products`, body);
     return data;
   } catch (error) {
     if (error.response) {

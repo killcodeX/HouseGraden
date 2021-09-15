@@ -85,12 +85,3 @@ export const getCartProduct = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-
-export const getOrderProduct = async (req, res) => {
-  try {
-    let result = await OrderMessage.find().populate("products.productId", "title image category price");
-    res.status(200).json(result);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};

@@ -9,6 +9,25 @@ export const SectionWrapper = styled.div`
   }
 `;
 
+export const NoDataBanner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 31rem;
+  height: 25rem;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 480px) {
+    margin: 0 auto;
+  }
+`;
+
 export const SectionTitle = styled.div`
   font-size: 2.2rem;
   font-weight: 500;

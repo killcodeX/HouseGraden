@@ -8,8 +8,7 @@ import { order } from "../../fakedata";
 import { getorderData } from "../../redux/actions/postactions";
 import { useDispatch } from "react-redux";
 
-export default function OrderSideMenus({sideOpen, setSideOpen}) {
-  const [value, setValue] = useState("Recent Orders");
+export default function OrderSideMenus({sideOpen, setSideOpen, setValue, value}) {
   const { width } = useWindowSize();
   const dispatch = useDispatch();
 

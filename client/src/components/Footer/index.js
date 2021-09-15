@@ -8,7 +8,7 @@ export default function Footer() {
   const { width } = useWindowSize();
   let location = useLocation();
   let footSmall = false;
-  if (location.pathname == "/" || location.pathname == "/my-orders") {
+  if (location.pathname.includes("/") || location.pathname.includes("/my-orders")) {
     footSmall = true;
   }
 

@@ -13,9 +13,8 @@ import {
   getSingleProduct,
   getWishlistProduct,
   getCartProduct,
-  getOrderProduct
 } from "../controllers/getController.js";
-import { filterProduct, handlePayment, orderSuccess } from "../controllers/postController.js";
+import { filterProduct, handlePayment, orderSuccess, getOrderProduct } from "../controllers/postController.js";
 import { AuthenticateToken } from "../middlewares/tokenValidate.js";
 import { addAddressToOrder, cancelOrder } from "../controllers/putController.js"
 
@@ -36,7 +35,7 @@ router.post("/create-product", createProduct);
 router.post("/filter-product", filterProduct);
 router.get("/wishlist-products", AuthenticateToken, getWishlistProduct);
 router.get("/cart-products", AuthenticateToken, getCartProduct);
-router.get("/order-products", AuthenticateToken, getOrderProduct)
+router.post("/order-products", AuthenticateToken, getOrderProduct);
 
 router.put("/cancel-order/:id", cancelOrder)
 
