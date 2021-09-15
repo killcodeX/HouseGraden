@@ -7,7 +7,7 @@ import { SideHeader, IconWrapper, SideBarTitle } from "./style";
 import { order } from "../../fakedata";
 
 export default function OrderSideMenus({sideOpen, setSideOpen}) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("Recent Orders");
   const { width } = useWindowSize();
 
   function handleChange(checkedValues) {

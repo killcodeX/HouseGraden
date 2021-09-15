@@ -14,10 +14,12 @@ export const ProductCardWrapper = styled.div`
   }
 `;
 
+export const OrderProductsWrapper = styled.div`
+  margin-bottom:10px;
+  border:1px solid #f2f2f2;
+`
+
 export const ProductImageWrapper = styled.div`
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
   width: 11rem;
   height: 11rem;
   overflow: hidden;
@@ -44,6 +46,7 @@ export const FlexSection = styled.div`
 
 export const RightSideProduct = styled.div`
   padding-left: 20px;
+  width:300px;
 
   @media (max-width: 480px) {
     padding-left: 10px;
@@ -88,8 +91,8 @@ export const BookButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 130px;
-  height: 40px;
+  width: 120px;
+  height: 33px;
   color: ${(props) => props.status};
   border: 1px solid ${(props) => props.status};
   border-radius: 0 3px 3px 0;

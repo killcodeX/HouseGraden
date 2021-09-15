@@ -15,11 +15,21 @@ import { useDispatch, useSelector } from "react-redux";
 export default function Orders() {
   const { width } = useWindowSize();
   const dispatch = useDispatch();
+  const products = useSelector(state => state.products.orderProducts)
+
+  console.log(products)
 
   useEffect(() => {
     dispatch(getorderData());
   }, []);
+
+
   let arr = [1, 2, 3, 4];
+
+  if(products?.length == 0){
+    return <span>Loading...</span>
+  }
+
   return (
     <SectionWrapper>
       {width > 1000 ? (
@@ -32,10 +42,10 @@ export default function Orders() {
         <Divider />
         <SectionSubTitle>Recent Orders</SectionSubTitle>
         <div className="row mt-4">
-          {arr.map((item) => {
+          {products?.map((item) => {
             return (
               <div key={item} className="col-sm-12 col-md-6 mb-4">
-                <OrderProduct />
+                <OrderProduct item={item}/>
               </div>
             );
           })}
