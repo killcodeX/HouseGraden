@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import useWindowSize from "../../helpers/windowSize";
 import { Divider, Steps } from "antd";
 import ProductList from "./productlist";
 import PriceDetail from "./priceDetail";
@@ -15,7 +16,7 @@ import {
   OrderSummaryCol,
   SectionTitle,
   SectionSubTitle,
-  NoDataBanner
+  NoDataBanner,
 } from "./style";
 import { getCartData } from "../../redux/actions/postactions";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,6 +24,7 @@ import { useDispatch, useSelector } from "react-redux";
 const { Step } = Steps;
 
 export default function Cart() {
+  const { width } = useWindowSize();
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth.isAuthenticated);
   const cartProduct = useSelector((state) => state.products.cartProduct);
@@ -74,7 +76,8 @@ export default function Cart() {
             <Divider />
             <PriceDetail />
           </OrderSummaryCol>
-          <div className="col-sm-12 col-md-7 px-5">
+          {width > 480 ? "" : <Divider />}
+          <div className="col-sm-12 col-md-7 px-3">
             <SectionSubTitle>CheckOut Process</SectionSubTitle>
             <Divider />
             <Steps
@@ -86,17 +89,21 @@ export default function Cart() {
                 title="Login"
                 status="finish"
                 icon={<AiOutlineUser />}
-                description={'User Logged in !!'}
+                description={"User Logged in !!"}
               />
               <Step
                 title="Shipment Address"
                 icon={<AiOutlineShoppingCart />}
-                description={<Address amount={amount} setCurrentStep={setCurrentStep}/>}
+                description={
+                  <Address amount={amount} setCurrentStep={setCurrentStep} />
+                }
               />
               <Step
                 title="Payment"
                 icon={<AiOutlineAudit />}
-                description={<Payment amount={amount} currentStep={currentStep}/>}
+                description={
+                  <Payment amount={amount} currentStep={currentStep} />
+                }
               />
             </Steps>
           </div>
