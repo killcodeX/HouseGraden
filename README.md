@@ -28,7 +28,7 @@ Final Backend Code -> [https://github.com/killcodeX/HouseGarden-back](https://gi
 ## ScreenShots
 
 <p align="center">
-  <img src="https://github.com/killcodeX/mern-hotelin/blob/main/screenshots/1.png" />
+  <img src="https://github.com/killcodeX/HouseGraden/blob/main/screenshots/1.png" />
 </p>
 <p align="center">
   Main Page
@@ -36,7 +36,7 @@ Final Backend Code -> [https://github.com/killcodeX/HouseGarden-back](https://gi
 <br>
 <br>
 <p align="center">
-  <img src="https://github.com/killcodeX/mern-hotelin/blob/main/screenshots/2.png" />
+  <img src="https://github.com/killcodeX/HouseGraden/blob/main/screenshots/2.png" />
 </p>
 <p align="center">
   Login Page
@@ -44,18 +44,18 @@ Final Backend Code -> [https://github.com/killcodeX/HouseGarden-back](https://gi
 <br>
 <br>
 <p align="center">
-  <img src="https://github.com/killcodeX/mern-hotelin/blob/main/screenshots/3.png" />
+  <img src="https://github.com/killcodeX/HouseGraden/blob/main/screenshots/3.png" />
 </p>
 <p align="center">
-  Hotels Listing Page
+  Single Product Page with About and Review sections
 </p>
 <br>
 <br>
 <p align="center">
-  <img src="https://github.com/killcodeX/mern-hotelin/blob/main/screenshots/4.png" />
+  <img src="https://github.com/killcodeX/mern-hotelin/blob/main/screenshots/5.png" />
 </p>
 <p align="center">
-  Single Hotel Page with booking form
+    WishList Product Page
 </p>
 <br>
 <br>
