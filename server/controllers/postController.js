@@ -88,21 +88,21 @@ export const orderSuccess = async (req, res) => {
 
 export const getOrderProduct = async (req, res) => {
   const { status } = req.body;
-  try {
+  try { // 
     if (status == "Cancelled Orders") {
-      let result = await OrderMessage.find({ status: "cancelled" }).populate(
+      let result = await OrderMessage.find({ userId: req.userId, status: "cancelled" }).populate(
         "products.productId",
         "title image category price"
       );
       return res.status(200).json(result);
-    } else if(status == "Received Orders"){
-      let result = await OrderMessage.find({ status: "received" }).populate(
+    } else if(status == "Received Orders"){ //{userId: req.userId, status: "received" }
+      let result = await OrderMessage.find({userId: req.userId, status: "received" }).populate(
         "products.productId",
         "title image category price"
       );
-      return res.status(200).json(result);
+      return res.status(200).json(result); //
     }
-    let result = await OrderMessage.find({ status: "confirmed" }).populate(
+    let result = await OrderMessage.find({ userId: req.userId, status: "confirmed" }).populate(
       "products.productId",
       "title image category price"
     );
